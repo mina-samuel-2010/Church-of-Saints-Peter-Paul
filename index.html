@@ -48,10 +48,11 @@
             </div>
             <nav class="desktop-nav">
                 <a href="enjeel.html">الإنجيل المقدس</a>
-                <a href="https://orsozox.org/Agpeya/Agpeya-ar.htm">الأجبية</a>
-                <a href="khulagi.html">الخلاجي</a>
-                <a href="https://zm-coptic.com/holybible/katamars.php">القطمارس</a>
+                <a href="404.html">الأجبية</a>
+                <a href="404.html">الخلاجي</a>
+                <a href="404.html">القطمارس</a>
                 <a href="courses/courses.html">الكورسات</a>
+                <a href="admin.html">Controls</a>
             </nav>
         </div>
     </header>
@@ -68,10 +69,14 @@
             </a>
         </div>
         <a href="enjeel.html" class="sidebar-link">الإنجيل المقدس</a>
-        <a href="https://orsozox.org/Agpeya/Agpeya-ar.htm" class="sidebar-link">الأجبية</a>
-        <a href="khulagi.html" class="sidebar-link">الخلاجي</a>
-        <a href="https://zm-coptic.com/holybible/katamars.php" class="sidebar-link">القطمارس</a>
+        <a href="404.html" class="sidebar-link">الأجبية</a>
+        <a href="404.html" class="sidebar-link">الخلاجي</a>
+        <a href="404.html" class="sidebar-link">القطمارس</a>
         <a href="courses/courses.html" class="sidebar-link">الكورسات</a>
+        <a href="admin.html" class="sidebar-link">Controls</a>
+
+
+
     </nav>
 
     <div class="main-image">
@@ -89,7 +94,7 @@
             </div>
         </div>
     </section>
-
+ 
     <section id="mass-schedule" class="section-transiti" data-aos="fade-up" data-aos-delay="100">
         <div class="container">
             <h2 class="section-title">مواعيد القداسات</h2>
@@ -237,7 +242,7 @@
     <footer>
         © جميع الحقوق محفوظة لكنيسة القديسين بطرس وبولس
         <br>
-        <a href="https://menasamuel2010.github.io/MISA-Technolgy./" target="_blank">Designed by MISA TECHNOLOGY</a>
+        <a href="https://menasamuel2010.github.io/MISA-Technolgy./" target="_blank">Designed by Mina Samuel</a>
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" integrity="sha512-A7AYk1fGKX6S2SsHywmPkrnzTZHrgiVT7GcQkLGDe2ev0aWb8zejytzS8wjo7PGEXKqJOrjQ4oORtnimIRZBtw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -247,38 +252,32 @@
             // Initialize AOS
             AOS.init({ duration: 1000, once: true });
 
-            // Initialize Vanilla Tilt
-            VanillaTilt.init(document.querySelector('.about-content'), {
-                max: 80000,
-                speed: 300000,
-                perspective: 800000
-            });
-            VanillaTilt.init(document.querySelector('.father'), {
-                max: 8,
-                speed: 30,
-                perspective: 80
-            });
-            VanillaTilt.init(document.querySelector('.father'), {
-                max: 8,
-                speed: 30,
-                perspective: 80
-            });
-            VanillaTilt.init(document.querySelector('.father'), {
-                max: 8,
-                speed: 30,
-                perspective: 80
-            });
-            VanillaTilt.init(document.querySelectorAll('.news-card'), {
-                max: 800,
-                speed: 30000,
-                perspective: 80000
-            });
-            VanillaTilt.init(document.querySelector('.table-responsive'), {
-                max: 8,
-                speed: 80,
-            });
+// Initialize Vanilla Tilt for Desktop only
+if (window.innerWidth >= 768) {
+    VanillaTilt.init(document.querySelector('.about-content'), {
+        max: 800,
+        speed: 300000,
+        perspective: 80000
+    });
+    
+    VanillaTilt.init(document.querySelectorAll('.father'), {
+        max: 8,
+        speed: 30,
+        perspective: 80
+    });
+    
+    VanillaTilt.init(document.querySelectorAll('.news-card'), {
+        max: 800,
+        speed: 30000,
+        perspective: 80000
+    });
+    
+    VanillaTilt.init(document.querySelector('.table-responsive'), {
+        max: 8,
+        speed: 80,
+    });
+}   
 
-            
 // منع النقر بزر الماوس الأيمن
 document.addEventListener('contextmenu', function(e) {
     e.preventDefault();
