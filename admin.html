@@ -586,32 +586,70 @@
 </script>
     
     <script>
-        // دالة لتحميل بيانات المستخدمين من localStorage
-        function loadUsers() {
-            const users = [];
-            
-            // البحث في localStorage عن جميع المستخدمين
-            for (let i = 0; i < localStorage.length; i++) {
-                const key = localStorage.key(i);
-                
-                // التحقق من أن المفتاح خاص بالمستخدمين
-                if (key.startsWith('user_')) {
-                    try {
-                        const userData = JSON.parse(localStorage.getItem(key));
-                        if (userData && userData.firstName && userData.lastName) {
-                            users.push({
-                                id: key.replace('user_', ''),
-                                ...userData
-                            });
-                        }
-                    } catch (e) {
-                        console.error('Error parsing user data:', e);
-                    }
+    
+// دالة لتحميل بيانات المستخدمين من localStorage
+function loadUsers() {
+    const users = [];
+    
+    // الطريقة 1: من المفاتيح الفردية (user_xxx)
+    for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        
+        if (key.startsWith('user_') && key.includes('_')) {
+            try {
+                const userData = JSON.parse(localStorage.getItem(key));
+                if (userData && userData.firstName && userData.lastName) {
+                    users.push({
+                        id: key,
+                        ...userData
+                    });
                 }
+            } catch (e) {
+                console.error('Error parsing user data:', e);
             }
-            
-            return users;
         }
+    }
+    
+    // الطريقة 2: من قائمة allUsers
+    try {
+        const allUsers = JSON.parse(localStorage.getItem('allUsers') || '[]');
+        allUsers.forEach(user => {
+            // تحقق إذا كان موجوداً بالفعل
+            const exists = users.some(u => u.id === user.id);
+            if (!exists && user.firstName && user.lastName) {
+                users.push(user);
+            }
+        });
+    } catch (e) {
+        console.error('Error parsing allUsers:', e);
+    }
+    
+    // الطريقة 3: من currentUser
+    try {
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        if (currentUser && currentUser.firstName && currentUser.lastName) {
+            const exists = users.some(user => user.id === currentUser.id);
+            if (!exists && currentUser.id) {
+                users.push(currentUser);
+            }
+        }
+    } catch (e) {
+        console.error('Error parsing currentUser:', e);
+    }
+    
+    // إزالة التكرارات
+    const uniqueUsers = [];
+    const seenIds = new Set();
+    
+    users.forEach(user => {
+        if (!seenIds.has(user.id)) {
+            seenIds.add(user.id);
+            uniqueUsers.push(user);
+        }
+    });
+    
+    return uniqueUsers;
+}
         
         // دالة لحفظ مستخدم جديد
         function saveUser(formData) {

@@ -1344,6 +1344,7 @@ function clearErrors() {
 function saveUserToAdminPanel(formData) {
     const userId = 'user_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
     const userData = {
+        id: userId,
         firstName: formData.firstName,
         lastName: formData.lastName,
         email: formData.email,
@@ -1353,15 +1354,22 @@ function saveUserToAdminPanel(formData) {
         isActive: true
     };
     
+    // حفظ في localStorage كمستخدم فردي (للوحة التحكم)
     localStorage.setItem(userId, JSON.stringify(userData));
     
-    // حفظ أيضاً للوصول السريع
-    localStorage.setItem('currentUser', JSON.stringify({
-        id: userId,
-        ...userData
-    }));
+    // حفظ أيضاً للمستخدم الحالي (للتسجيل في الموقع)
+    localStorage.setItem('currentUser', JSON.stringify(userData));
     
-    console.log('تم حفظ المستخدم في لوحة التحكم:', userData);
+    // حفظ للوصول السريع في الصفحة الرئيسية
+    localStorage.setItem('userFirstName', formData.firstName);
+    localStorage.setItem('userLastName', formData.lastName);
+    localStorage.setItem('userEmail', formData.email);
+    localStorage.setItem('userPhone', formData.phone);
+    localStorage.setItem('isLoggedIn', 'true');
+    localStorage.setItem('registrationDate', new Date().toISOString());
+    localStorage.setItem('userFullName', `${formData.firstName} ${formData.lastName}`);
+    
+    console.log('✅ تم حفظ المستخدم في لوحة التحكم:', userData);
     return userData;
 }
             
@@ -1497,6 +1505,35 @@ document.getElementById('registrationForm').addEventListener('submit', async fun
                 }
             });
         });
+
+        // دالة لحفظ جميع أنواع بيانات المستخدم
+function saveUserDataEverywhere(formData) {
+    // 1. حفظ في لوحة التحكم (user_xxx)
+    const adminUser = saveUserToAdminPanel(formData);
+    
+    // 2. حفظ بيانات المستخدم الأساسية للوصول السريع
+    localStorage.setItem('userFirstName', formData.firstName);
+    localStorage.setItem('userLastName', formData.lastName);
+    localStorage.setItem('userEmail', formData.email);
+    localStorage.setItem('userPhone', formData.phone);
+    localStorage.setItem('isLoggedIn', 'true');
+    localStorage.setItem('registrationDate', new Date().toISOString());
+    localStorage.setItem('userFullName', `${formData.firstName} ${formData.lastName}`);
+    
+    // 3. حفظ في قائمة المستخدمين (مخزن منفصل)
+    const allUsers = JSON.parse(localStorage.getItem('allUsers') || '[]');
+    allUsers.push({
+        id: adminUser.id,
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        email: formData.email,
+        phone: formData.phone,
+        registrationDate: new Date().toISOString()
+    });
+    localStorage.setItem('allUsers', JSON.stringify(allUsers));
+    
+    return adminUser;
+}
         
         // ===== PERFORMANCE OPTIMIZATIONS =====
         // Debounce resize events
