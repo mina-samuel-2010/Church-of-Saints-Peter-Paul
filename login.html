@@ -750,9 +750,10 @@
             </div>
             
             <!-- Registration Form -->
-            <form 
+<form id="registrationForm"
 action="https://formsubmit.co/church.saints.peter.paul@gmail.com" 
 method="POST">
+
 
                 
 <input type="hidden" name="_subject" value="تسجيل مستخدم جديد - كنيسة القديسين بطرس وبولس">
@@ -1290,92 +1291,7 @@ method="POST">
             return isValid;
         }
         
-        // ===== FORM SUBMISSION =====
-        document.getElementById('registrationForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            if (!validateForm()) {
-                const firstError = document.querySelector('.error-message.show');
-                if (firstError) {
-                    const inputId = firstError.id.replace('Error', '');
-                    const inputElement = document.getElementById(inputId);
-                    inputElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    inputElement.focus();
-                }
-                return;
-            }
-            
-            const submitBtn = document.getElementById('submitBtn');
-            const loadingOverlay = document.getElementById('loadingOverlay');
-            
-            submitBtn.disabled = true;
-            submitBtn.classList.add('loading');
-            loadingOverlay.classList.add('active');
-            
-            // Collect form data
-            const formData = {
-                firstName: document.getElementById('firstName').value.trim(),
-                lastName: document.getElementById('lastName').value.trim(),
-                email: document.getElementById('email').value.trim(),
-                phone: document.getElementById('phone').value.trim(),
-                password: document.getElementById('password').value,
-                timestamp: new Date().toLocaleString('ar-EG')
-            };
-            
-            try {
-                // حفظ محلي
-                const localUser = saveUserToAdminPanel(formData);
-                
-                
-                
-                const result = await response.json();
-                
-                if (result.success) {
-                    console.log('✅ تم إرسال الإيميل إلى FormSubmit بنجاح');
-                    
-                    // حفظ بيانات إضافية للصفحة الرئيسية
-                    localStorage.setItem('userFirstName', formData.firstName);
-                    localStorage.setItem('userLastName', formData.lastName);
-                    localStorage.setItem('userEmail', formData.email);
-                    localStorage.setItem('userPhone', formData.phone);
-                    localStorage.setItem('isLoggedIn', 'true');
-                    localStorage.setItem('userFullName', `${formData.firstName} ${formData.lastName}`);
-                    localStorage.setItem('registrationDate', new Date().toISOString());
-                    
-                    // عرض رسالة النجاح
-                    document.getElementById('successAnimation').classList.add('show');
-                    
-                    // التوجيه بعد 3 ثواني
-                    setTimeout(() => {
-                        window.location.href = 'index.html';
-                    }, 3000);
-                    
-                } else {
-                    throw new Error('فشل في إرسال الإيميل عبر FormSubmit');
-                }
-                
-            } catch (error) {
-                console.error('❌ خطأ في التسجيل:', error);
-                
-                // حتى لو فشل FormSubmit، استمر في التسجيل المحلي
-                localStorage.setItem('userFirstName', formData.firstName);
-                localStorage.setItem('userLastName', formData.lastName);
-                localStorage.setItem('userEmail', formData.email);
-                localStorage.setItem('isLoggedIn', 'true');
-                
-                // عرض رسالة النجاح (وضع عدم الاتصال)
-                document.getElementById('successAnimation').classList.add('show');
-                
-                setTimeout(() => {
-                    window.location.href = 'index.html';
-                }, 3000);
-                
-            } finally {
-                submitBtn.disabled = false;
-                submitBtn.classList.remove('loading');
-                loadingOverlay.classList.remove('active');
-            }
-        });
+
         
         // ===== ENHANCED INPUT EFFECTS =====
         document.querySelectorAll('.form-control').forEach(input => {
