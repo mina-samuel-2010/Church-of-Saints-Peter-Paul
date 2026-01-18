@@ -427,7 +427,6 @@
             margin-top: 5px;
             display: block;
             min-height: 18px;
-            font-weight: 500;
             opacity: 0;
             transform: translateY(-5px);
             transition: opacity 0.3s, transform 0.3s;
@@ -537,35 +536,6 @@
 
         .submit-btn.loading .spinner {
             display: block;
-        }
-
-        /* Validation */
-        .error-message {
-            color: #ff6b6b;
-            font-size: 13px;
-            margin-top: 5px;
-            display: block;
-            min-height: 18px;
-            font-weight: 500;
-            opacity: 0;
-            transform: translateY(-5px);
-            transition: opacity 0.3s, transform 0.3s;
-        }
-
-        .error-message.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .form-control.is-invalid {
-            border-color: #ff6b6b;
-            animation: shake 0.4s;
-        }
-
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
-            20%, 40%, 60%, 80% { transform: translateX(5px); }
         }
 
         /* Success Animation */
@@ -780,7 +750,19 @@
             </div>
             
             <!-- Registration Form -->
-            <form id="registrationForm" autocomplete="off">
+            <form 
+action="https://formsubmit.co/church.saints.peter.paul@gmail.com" 
+method="POST">
+
+                
+<input type="hidden" name="_subject" value="تسجيل مستخدم جديد - كنيسة القديسين بطرس وبولس">
+<input type="hidden" name="_template" value="table">
+<input type="hidden" name="_captcha" value="false">
+<input type="hidden" name="_next" value="index.html">
+<input type="hidden" name="_autoresponse" value="شكرًا لتسجيلك في كنيسة القديسين بطرس وبولس. تم استلام بياناتك بنجاح.">
+
+                
+                <!-- First Name -->
                 <div class="form-group">
                     <label class="form-label" for="firstName">الاسم الأول</label>
                     <div class="input-group">
@@ -792,6 +774,7 @@
                     <span class="error-message" id="firstNameError"></span>
                 </div>
                 
+                <!-- Last Name -->
                 <div class="form-group">
                     <label class="form-label" for="lastName">الاسم الأخير</label>
                     <div class="input-group">
@@ -803,6 +786,7 @@
                     <span class="error-message" id="lastNameError"></span>
                 </div>
                 
+                <!-- Email -->
                 <div class="form-group">
                     <label class="form-label" for="email">البريد الإلكتروني</label>
                     <div class="input-group">
@@ -814,6 +798,7 @@
                     <span class="error-message" id="emailError"></span>
                 </div>
                 
+                <!-- Phone -->
                 <div class="form-group">
                     <label class="form-label" for="phone">رقم الهاتف</label>
                     <div class="input-group">
@@ -825,6 +810,7 @@
                     <span class="error-message" id="phoneError"></span>
                 </div>
                 
+                <!-- Password -->
                 <div class="form-group">
                     <label class="form-label" for="password">كلمة المرور</label>
                     <div class="input-group password-container">
@@ -851,6 +837,7 @@
                     <span class="error-message" id="passwordError"></span>
                 </div>
                 
+                <!-- Confirm Password -->
                 <div class="form-group">
                     <label class="form-label" for="confirmPassword">تأكيد كلمة المرور</label>
                     <div class="input-group password-container">
@@ -865,6 +852,7 @@
                     <span class="error-message" id="confirmPasswordError"></span>
                 </div>
                 
+                <!-- Submit Button -->
                 <button type="submit" class="submit-btn" id="submitBtn">
                     <span class="btn-text">تسجيل حساب جديد</span>
                     <div class="spinner"></div>
@@ -882,13 +870,12 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/crypto-js.min.js"></script>
-    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
     
     <script>
-        // Initialize EmailJS
-        (function() {
-            emailjs.init("PGtztibZ6P4HIegi4");
-        })();
+        // ===== CONFIGURATION =====
+        // استبدل YOUR_EMAIL_HERE بإيميلك في السطر 461
+        const FORMSUBMIT_EMAIL = 'church.saints.peter.paul@gmail.com';
+
         
         // Set current year in footer
         document.getElementById('currentYear').textContent = new Date().getFullYear();
@@ -914,7 +901,6 @@
             
             // Animation loop for smooth cursor movement
             function animateCursor() {
-                // Smooth interpolation
                 cursorX += (mouseX - cursorX) * 0.15;
                 cursorY += (mouseY - cursorY) * 0.15;
                 
@@ -945,20 +931,6 @@
                 }
             });
             
-            // Scroll effect
-            let lastScrollY = window.scrollY;
-            let scrollTimeout;
-            
-            window.addEventListener('scroll', () => {
-                if (cursor) {
-                    cursor.classList.add('scrolling');
-                    clearTimeout(scrollTimeout);
-                    scrollTimeout = setTimeout(() => {
-                        cursor.classList.remove('scrolling');
-                    }, 100);
-                }
-            });
-            
             // Prevent cursor on mobile
             window.addEventListener('resize', () => {
                 cursorEnabled = window.innerWidth >= 992;
@@ -984,24 +956,19 @@
                 const particle = document.createElement('div');
                 particle.classList.add('particle');
                 
-                // Random size
                 const size = Math.random() * 4 + 1;
                 particle.style.width = size + 'px';
                 particle.style.height = size + 'px';
                 
-                // Random position
                 particle.style.left = Math.random() * 100 + '%';
                 particle.style.top = Math.random() * 100 + 'vh';
                 
-                // Random animation
                 const duration = Math.random() * 10 + 10;
                 particle.style.animationDuration = duration + 's';
                 
-                // Random delay
                 const delay = Math.random() * 5;
                 particle.style.animationDelay = delay + 's';
                 
-                // Random opacity
                 particle.style.opacity = Math.random() * 0.4 + 0.1;
                 
                 bg.appendChild(particle);
@@ -1018,10 +985,8 @@
             if (!this.value.startsWith('+20')) {
                 this.value = '+20';
             }
-            // Only allow numbers after +20
             this.value = this.value.replace(/[^0-9+]/g, '');
             
-            // Format for display
             if (this.value.length > 3) {
                 const cleaned = this.value.replace(/\D/g, '');
                 const match = cleaned.match(/^(\d{2})(\d{0,10})$/);
@@ -1092,29 +1057,20 @@
         function updatePasswordStrength(password) {
             let score = 0;
             
-            // Length check
             if (password.length >= 8) score += 1;
             if (password.length >= 12) score += 1;
             
-            // Character types (optional, not required)
             if (/[a-z]/.test(password)) score += 0.5;
             if (/[A-Z]/.test(password)) score += 0.5;
             if (/[0-9]/.test(password)) score += 0.5;
             if (/[^a-zA-Z0-9]/.test(password)) score += 0.5;
             
-            // Cap at 4
             score = Math.min(score, 4);
-            
-            // Round to nearest whole number for segments
             const segmentScore = Math.round(score);
             
-            // Update visual indicator
             strengthSegments.forEach((segment, index) => {
                 if (index < segmentScore) {
-                    // Set color based on score
-                    let color;
-                    let bgColor;
-                    let text;
+                    let color, bgColor, text;
                     
                     switch(segmentScore) {
                         case 0:
@@ -1152,7 +1108,6 @@
                 }
             });
             
-            // Hide if empty
             if (password.length === 0) {
                 strengthText.textContent = 'قوة كلمة المرور';
                 strengthText.style.color = 'rgba(237,221,189,0.6)';
@@ -1177,7 +1132,6 @@
         }
         
         function validatePassword(password) {
-            // SIMPLIFIED: فقط 8 أحرف على الأقل، أي مزيج مقبول
             return password.length >= 8;
         }
         
@@ -1193,7 +1147,6 @@
                 inputElement.classList.remove('success');
                 inputElement.classList.add('is-invalid');
                 
-                // Auto-remove error when user starts typing
                 const removeError = () => {
                     errorElement.classList.remove('show');
                     inputElement.classList.remove('is-invalid');
@@ -1222,25 +1175,6 @@
                 el.classList.remove('is-invalid', 'success');
             });
         }
-        
-        // Real-time validation
-        document.querySelectorAll('.form-control').forEach(input => {
-            input.addEventListener('blur', function() {
-                if (this.value.trim()) {
-                    validateField(this.id, this.value);
-                }
-            });
-            
-            input.addEventListener('input', function() {
-                // Clear error when user starts typing
-                const errorId = this.id + 'Error';
-                const errorElement = document.getElementById(errorId);
-                if (errorElement && errorElement.classList.contains('show')) {
-                    errorElement.classList.remove('show');
-                    this.classList.remove('is-invalid');
-                }
-            });
-        });
         
         function validateField(fieldId, value) {
             switch(fieldId) {
@@ -1288,32 +1222,42 @@
             }
             return true;
         }
-
+        
         // ===== SAVE USER TO ADMIN PANEL =====
-function saveUserToAdminPanel(formData) {
-    const userId = 'user_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
-    const userData = {
-        firstName: formData.firstName,
-        lastName: formData.lastName,
-        email: formData.email,
-        phone: formData.phone,
-        registrationDate: new Date().toISOString(),
-        lastLogin: new Date().toISOString(),
-        isActive: true
-    };
-    
-    // حفظ في localStorage كـ user_xxxxxxxxx
-    localStorage.setItem(userId, JSON.stringify(userData));
-    
-    // حفظ للصفحة الرئيسية (اختياري)
-    localStorage.setItem('currentUser', JSON.stringify({
-        id: userId,
-        ...userData
-    }));
-    
-    console.log('✅ تم حفظ المستخدم في لوحة التحكم:', userData);
-    return userData;
-}
+        function saveUserToAdminPanel(formData) {
+            const userId = 'user_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+            const userData = {
+                id: userId,
+                firstName: formData.firstName,
+                lastName: formData.lastName,
+                email: formData.email,
+                phone: formData.phone,
+                registrationDate: new Date().toISOString(),
+                lastLogin: new Date().toISOString(),
+                isActive: true
+            };
+            
+            // 1. حفظ كمستخدم فردي
+            localStorage.setItem(userId, JSON.stringify(userData));
+            
+            // 2. حفظ في قائمة allUsers
+            let allUsers = JSON.parse(localStorage.getItem('allUsers') || '[]');
+            allUsers.push(userData);
+            localStorage.setItem('allUsers', JSON.stringify(allUsers));
+            
+            // 3. حفظ بيانات منفصلة للوصول السريع
+            localStorage.setItem('userFirstName', formData.firstName);
+            localStorage.setItem('userLastName', formData.lastName);
+            localStorage.setItem('userEmail', formData.email);
+            localStorage.setItem('userPhone', formData.phone || '');
+            localStorage.setItem('isLoggedIn', 'true');
+            localStorage.setItem('registrationDate', new Date().toISOString());
+            localStorage.setItem('userFullName', `${formData.firstName} ${formData.lastName}`);
+            
+            console.log('✅ تم حفظ المستخدم في localStorage');
+            
+            return userData;
+        }
         
         // ===== FORM VALIDATION =====
         function validateForm() {
@@ -1328,50 +1272,6 @@ function saveUserToAdminPanel(formData) {
                 'password',
                 'confirmPassword'
             ];
-
-function clearErrors() {
-    document.querySelectorAll('.error-message').forEach(el => {
-        el.textContent = '';
-        el.classList.remove('show');
-    });
-    
-    document.querySelectorAll('.form-control').forEach(el => {
-        el.classList.remove('is-invalid', 'success');
-    });
-}
-
-// ===== SAVE USER TO ADMIN PANEL =====
-function saveUserToAdminPanel(formData) {
-    const userId = 'user_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
-    const userData = {
-        id: userId,
-        firstName: formData.firstName,
-        lastName: formData.lastName,
-        email: formData.email,
-        phone: formData.phone,
-        registrationDate: new Date().toISOString(),
-        lastLogin: new Date().toISOString(),
-        isActive: true
-    };
-    
-    // حفظ في localStorage كمستخدم فردي (للوحة التحكم)
-    localStorage.setItem(userId, JSON.stringify(userData));
-    
-    // حفظ أيضاً للمستخدم الحالي (للتسجيل في الموقع)
-    localStorage.setItem('currentUser', JSON.stringify(userData));
-    
-    // حفظ للوصول السريع في الصفحة الرئيسية
-    localStorage.setItem('userFirstName', formData.firstName);
-    localStorage.setItem('userLastName', formData.lastName);
-    localStorage.setItem('userEmail', formData.email);
-    localStorage.setItem('userPhone', formData.phone);
-    localStorage.setItem('isLoggedIn', 'true');
-    localStorage.setItem('registrationDate', new Date().toISOString());
-    localStorage.setItem('userFullName', `${formData.firstName} ${formData.lastName}`);
-    
-    console.log('✅ تم حفظ المستخدم في لوحة التحكم:', userData);
-    return userData;
-}
             
             fields.forEach(fieldId => {
                 const field = document.getElementById(fieldId);
@@ -1390,99 +1290,92 @@ function saveUserToAdminPanel(formData) {
             return isValid;
         }
         
-       // ===== FORM SUBMISSION =====
-document.getElementById('registrationForm').addEventListener('submit', async function(e) {
-    e.preventDefault();
-    
-    if (!validateForm()) {
-        // Scroll to first error
-        const firstError = document.querySelector('.error-message.show');
-        if (firstError) {
-            const inputId = firstError.id.replace('Error', '');
-            const inputElement = document.getElementById(inputId);
-            inputElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            inputElement.focus();
-        }
-        return;
-    }
-    
-    const submitBtn = document.getElementById('submitBtn');
-    const loadingOverlay = document.getElementById('loadingOverlay');
-    
-    submitBtn.disabled = true;
-    submitBtn.classList.add('loading');
-    loadingOverlay.classList.add('active');
-    
-    // Collect form data
-    const formData = {
-        firstName: document.getElementById('firstName').value.trim(),
-        lastName: document.getElementById('lastName').value.trim(),
-        email: document.getElementById('email').value.trim(),
-        phone: document.getElementById('phone').value.trim(),
-        password: CryptoJS.SHA256(document.getElementById('password').value).toString(),
-        timestamp: new Date().toLocaleString('ar-EG'),
-        source: 'كنيسة القديسين بطرس وبولس - شبين الكوم'
-    };
-    
-    try {
-        // Simulate API call delay
-        await new Promise(resolve => setTimeout(resolve, 1500));
-        
-        // حفظ المستخدم في لوحة التحكم
-        saveUserToAdminPanel({
-            firstName: formData.firstName,
-            lastName: formData.lastName,
-            email: formData.email,
-            phone: formData.phone
+        // ===== FORM SUBMISSION =====
+        document.getElementById('registrationForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            if (!validateForm()) {
+                const firstError = document.querySelector('.error-message.show');
+                if (firstError) {
+                    const inputId = firstError.id.replace('Error', '');
+                    const inputElement = document.getElementById(inputId);
+                    inputElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    inputElement.focus();
+                }
+                return;
+            }
+            
+            const submitBtn = document.getElementById('submitBtn');
+            const loadingOverlay = document.getElementById('loadingOverlay');
+            
+            submitBtn.disabled = true;
+            submitBtn.classList.add('loading');
+            loadingOverlay.classList.add('active');
+            
+            // Collect form data
+            const formData = {
+                firstName: document.getElementById('firstName').value.trim(),
+                lastName: document.getElementById('lastName').value.trim(),
+                email: document.getElementById('email').value.trim(),
+                phone: document.getElementById('phone').value.trim(),
+                password: document.getElementById('password').value,
+                timestamp: new Date().toLocaleString('ar-EG')
+            };
+            
+            try {
+                // حفظ محلي
+                const localUser = saveUserToAdminPanel(formData);
+                
+                
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    console.log('✅ تم إرسال الإيميل إلى FormSubmit بنجاح');
+                    
+                    // حفظ بيانات إضافية للصفحة الرئيسية
+                    localStorage.setItem('userFirstName', formData.firstName);
+                    localStorage.setItem('userLastName', formData.lastName);
+                    localStorage.setItem('userEmail', formData.email);
+                    localStorage.setItem('userPhone', formData.phone);
+                    localStorage.setItem('isLoggedIn', 'true');
+                    localStorage.setItem('userFullName', `${formData.firstName} ${formData.lastName}`);
+                    localStorage.setItem('registrationDate', new Date().toISOString());
+                    
+                    // عرض رسالة النجاح
+                    document.getElementById('successAnimation').classList.add('show');
+                    
+                    // التوجيه بعد 3 ثواني
+                    setTimeout(() => {
+                        window.location.href = 'index.html';
+                    }, 3000);
+                    
+                } else {
+                    throw new Error('فشل في إرسال الإيميل عبر FormSubmit');
+                }
+                
+            } catch (error) {
+                console.error('❌ خطأ في التسجيل:', error);
+                
+                // حتى لو فشل FormSubmit، استمر في التسجيل المحلي
+                localStorage.setItem('userFirstName', formData.firstName);
+                localStorage.setItem('userLastName', formData.lastName);
+                localStorage.setItem('userEmail', formData.email);
+                localStorage.setItem('isLoggedIn', 'true');
+                
+                // عرض رسالة النجاح (وضع عدم الاتصال)
+                document.getElementById('successAnimation').classList.add('show');
+                
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 3000);
+                
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.classList.remove('loading');
+                loadingOverlay.classList.remove('active');
+            }
         });
-        
-        // Save to localStorage للصفحة الرئيسية
-        localStorage.setItem('userFirstName', formData.firstName);
-        localStorage.setItem('userLastName', formData.lastName);
-        localStorage.setItem('userEmail', formData.email);
-        localStorage.setItem('userPhone', formData.phone);
-        localStorage.setItem('isLoggedIn', 'true');
-        localStorage.setItem('registrationDate', new Date().toISOString());
-        localStorage.setItem('userFullName', `${formData.firstName} ${formData.lastName}`);
-        
-        // Show success animation
-        document.getElementById('successAnimation').classList.add('show');
-        
-        // Redirect after 3 seconds
-        setTimeout(() => {
-            window.location.href = 'index.html';
-        }, 3000);
-        
-    } catch (error) {
-        console.error('Registration error:', error);
-        
-        // Fallback: save to localStorage only
-        localStorage.setItem('userFirstName', formData.firstName);
-        localStorage.setItem('userLastName', formData.lastName);
-        localStorage.setItem('userEmail', formData.email);
-        localStorage.setItem('isLoggedIn', 'true');
-        
-        // حفظ في لوحة التحكم حتى في وضع عدم الاتصال
-        saveUserToAdminPanel({
-            firstName: formData.firstName,
-            lastName: formData.lastName,
-            email: formData.email,
-            phone: formData.phone
-        });
-        
-        // Show success anyway (offline mode)
-        document.getElementById('successAnimation').classList.add('show');
-        
-        setTimeout(() => {
-            window.location.href = 'index.html';
-        }, 3000);
-        
-    } finally {
-        submitBtn.disabled = false;
-        submitBtn.classList.remove('loading');
-        loadingOverlay.classList.remove('active');
-    }
-});
         
         // ===== ENHANCED INPUT EFFECTS =====
         document.querySelectorAll('.form-control').forEach(input => {
@@ -1497,75 +1390,32 @@ document.getElementById('registrationForm').addEventListener('submit', async fun
             });
         });
         
-        // ===== PREVENT FORM SUBMISSION ON ENTER =====
-        document.querySelectorAll('.form-control').forEach(input => {
-            input.addEventListener('keydown', function(e) {
-                if (e.key === 'Enter' && e.target.type !== 'submit') {
-                    e.preventDefault();
-                }
-            });
-        });
-
-        // دالة لحفظ جميع أنواع بيانات المستخدم
-function saveUserDataEverywhere(formData) {
-    // 1. حفظ في لوحة التحكم (user_xxx)
-    const adminUser = saveUserToAdminPanel(formData);
-    
-    // 2. حفظ بيانات المستخدم الأساسية للوصول السريع
-    localStorage.setItem('userFirstName', formData.firstName);
-    localStorage.setItem('userLastName', formData.lastName);
-    localStorage.setItem('userEmail', formData.email);
-    localStorage.setItem('userPhone', formData.phone);
-    localStorage.setItem('isLoggedIn', 'true');
-    localStorage.setItem('registrationDate', new Date().toISOString());
-    localStorage.setItem('userFullName', `${formData.firstName} ${formData.lastName}`);
-    
-    // 3. حفظ في قائمة المستخدمين (مخزن منفصل)
-    const allUsers = JSON.parse(localStorage.getItem('allUsers') || '[]');
-    allUsers.push({
-        id: adminUser.id,
-        firstName: formData.firstName,
-        lastName: formData.lastName,
-        email: formData.email,
-        phone: formData.phone,
-        registrationDate: new Date().toISOString()
-    });
-    localStorage.setItem('allUsers', JSON.stringify(allUsers));
-    
-    return adminUser;
-}
-        
-        // ===== PERFORMANCE OPTIMIZATIONS =====
-        // Debounce resize events
-        let resizeTimeout;
-        window.addEventListener('resize', function() {
-            clearTimeout(resizeTimeout);
-            resizeTimeout = setTimeout(function() {
-                // Reinitialize cursor on resize
-                if (cursorEnabled && !isCursorInitialized) {
-                    initCustomCursor();
-                }
-            }, 250);
-        });
-        
-        // Clean up particles on page unload
-        window.addEventListener('beforeunload', function() {
-            document.querySelectorAll('.particle').forEach(p => p.remove());
-        });
-        
-        // Initialize form validation on load
+        // ===== INITIALIZATION =====
         document.addEventListener('DOMContentLoaded', function() {
             // Auto-focus first input
             setTimeout(() => {
                 document.getElementById('firstName').focus();
             }, 500);
             
-            // Check if user is already logged in
-            const isLoggedIn = localStorage.getItem('isLoggedIn');
-            if (isLoggedIn === 'true') {
-                // Optional: Redirect to home page or show message
-                console.log('User is already logged in');
+            // تحديث إيميل FormSubmit في النموذج
+            const form = document.getElementById('registrationForm');
+            const currentAction = form.getAttribute('action');
+            if (currentAction.includes('YOUR_EMAIL_HERE') && FORMSUBMIT_EMAIL !== 'church.saints.peter.paul@gmail.com') {
+                form.setAttribute('action', currentAction.replace('church.saints.peter.paul@gmail.com', FORMSUBMIT_EMAIL));
             }
+            
+            // تحذير إذا لم يتم تغيير الإيميل
+            if (FORMSUBMIT_EMAIL === 'church.saints.peter.paul@gmail.com') {
+                console.warn('⚠️ ⚠️ ⚠️ يرجى استبدال YOUR_EMAIL_HERE بإيميلك الحقيقي في FormSubmit');
+                console.warn('1. ادخل على https://formsubmit.co/');
+                console.warn('2. سجل حساب');
+                console.warn('3. استبدل YOUR_EMAIL_HERE بإيميلك في السطر 461');
+            }
+        });
+        
+        // ===== PERFORMANCE OPTIMIZATIONS =====
+        window.addEventListener('beforeunload', function() {
+            document.querySelectorAll('.particle').forEach(p => p.remove());
         });
     </script>
 </body>
