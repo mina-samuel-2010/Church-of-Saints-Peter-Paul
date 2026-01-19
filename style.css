@@ -27,6 +27,8 @@ body.dark-mode {
     color: #efdfbf;
 }
 
+
+
 /* Custom Cursor (Desktop Only) */
 @media (min-width: 768px) {
     body {
@@ -106,7 +108,7 @@ body.dark-mode {
 }
 
 .top-bar.scrolled {
-    background: linear-gradient(90deg, #800000, #a00000);
+    background: linear-gradient(90deg, #002334d4, #820303db);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
@@ -208,6 +210,290 @@ body.dark-mode {
 .dark-mode .welcome-message #userName {
     color: #d4a017;
 }
+
+/* ===== تحسينات لشاشة الكمبيوتر ===== */
+@media (min-width: 769px) {
+    .section-transiti {
+        padding: 100px 0;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+    
+    .section-transiti:hover {
+        transform: scale(1.005);
+        transition: transform 0.3s ease;
+    }
+}
+
+/* ===== تحسينات لشاشة الموبايل ===== */
+@media (max-width: 768px) {
+    .section-transiti {
+        padding: 60px 0;
+        margin: 0;
+        overflow: hidden;
+    }
+    
+    /* إصلاح مشكلة الجيرسكوب في الموبايل */
+    .about-content {
+        perspective: none !important;
+        transform-style: flat !important;
+    }
+    
+    /* تعطيل تأثير tilt في الموبايل */
+    .about-content[data-tilt],
+    .news-card[data-tilt],
+    .father[data-tilt] {
+        transform: none !important;
+    }
+    
+    /* تحسين الأداء */
+    .section-transiti {
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        transform: translateZ(0);
+        -webkit-transform: translateZ(0);
+    }
+}
+
+#church-news {
+    position: relative;
+    z-index: 2;
+}
+
+#fathersSection {
+    background: linear-gradient(135deg, rgba(212, 160, 23, 0.05), rgba(128, 0, 0, 0.05));
+}
+
+.dark-mode #fathersSection {
+    background: linear-gradient(135deg, rgba(128, 0, 0, 0.05), rgba(212, 160, 23, 0.05));
+}
+
+#donationSection {
+    background: linear-gradient(135deg, rgba(128, 0, 0, 0.1), rgba(212, 160, 23, 0.1));
+}
+
+.dark-mode #donationSection {
+    background: linear-gradient(135deg, rgba(1, 51, 70, 0.1), rgba(128, 0, 0, 0.05));
+}
+
+/* ===== تحسينات للأقسام الفردية ===== */
+.about-content {
+    position: relative;
+    z-index: 1;
+    transition: transform 0.3s ease !important;
+}
+
+/* إصلاح عناصر الجيرسكوب في الموبايل */
+@media (max-width: 768px) {
+    [data-tilt] {
+        transform: none !important;
+        transition: none !important;
+    }
+    
+    [data-tilt] * {
+        transform: none !important;
+        transition: none !important;
+    }
+    
+    /* جعل الصور أكثر استجابة */
+    .church-image {
+        max-width: 100% !important;
+        height: auto !important;
+        transform: none !important;
+    }
+    
+    /* تحسين تأثيرات الهوفر في الموبايل */
+    .news-card:hover,
+    .father:hover {
+        transform: none !important;
+    }
+}
+
+/* ===== تحسينات للتابلت ===== */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .section-transiti {
+        padding: 80px 0;
+    }
+    
+    .about-section .about-content {
+        flex-direction: column;
+        gap: 40px;
+    }
+    
+    .church-image {
+        max-width: 80% !important;
+        margin: 0 auto;
+    }
+}
+
+/* ===== تحسينات للحركة والتفاعل ===== */
+.section-transiti {
+    transition: transform 0.4s cubic-bezier(0.22, 0.61, 0.36, 1),
+                opacity 0.4s ease;
+}
+
+/* تأثيرات عند الظهور */
+.section-transiti[data-aos].aos-animate {
+    animation: sectionAppear 0.6s ease forwards;
+}
+
+@keyframes sectionAppear {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== تحسينات للأداء ===== */
+@media (prefers-reduced-motion: reduce) {
+    .section-transiti,
+    .section-transiti * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* ===== تحسينات للصفحة الرئيسية ===== */
+.main-image {
+    position: relative;
+    z-index: 1;
+}
+
+/* ضبط الـ Overlay للصورة الرئيسية */
+.main-image .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.6) 0%,
+        rgba(0, 0, 0, 0.4) 50%,
+        rgba(0, 0, 0, 0.2) 100%
+    );
+}
+
+/* ===== تحسينات للنافبار في الموبايل ===== */
+@media (max-width: 768px) {
+    .top-bar {
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        background: linear-gradient(90deg, #002334d4, #820303db) !important;
+    }
+
+
+
+
+    
+    .top-bar.transparent {
+        background: rgba(0, 0, 0, 0.3) !important;
+    }
+    
+    .main-image {
+        height: 60vh;
+        min-height: 400px;
+    }
+}
+
+/* إظهار وإخفاء العناصر حسب الجهاز */
+.desktop-only {
+    display: block;
+}
+
+.mobile-only {
+    display: none !important;
+}
+
+@media (max-width: 768px) {
+    .desktop-only {
+        display: none !important;
+    }
+    
+    .mobile-only {
+        display: block !important;
+    }
+    
+    /* تعديلات لزر تسجيل الدخول في الموبايل */
+    #loginButtonMobile {
+        display: inline-block !important;
+        margin: 10px auto;
+        padding: 10px 20px;
+        font-size: 1rem;
+        width: auto;
+        max-width: 200px;
+        order: 2;
+    }
+    
+    /* ترتيب العناصر في الموبايل */
+    .welcome-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    
+    .social-media {
+        order: 1;
+        margin-bottom: 10px;
+    }
+    
+    .welcome-message {
+        order: 3;
+        text-align: center;
+        width: 90%;
+        margin: 5px 0;
+    }
+    
+    /* تعديل mobile-header ليشمل زر التسجيل */
+    .mobile-header {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px 0;
+    }
+    
+    /* إصلاح top-bar للجوال */
+    .top-bar {
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+    
+    .top-bar.transparent {
+        background: rgba(0, 0, 0, 0.3) !important;
+    }
+    
+    .top-bar.scrolled {
+        background: linear-gradient(90deg, #800000, #a00000) !important;
+    }
+}
+
+
+/* ===== تحسينات عامة للأقسام ===== */
+#aboutSection {
+    background: linear-gradient(135deg, rgba(239, 223, 191, 0.1), rgba(1, 51, 70, 0.05));
+}
+
+.dark-mode #aboutSection {
+    background: linear-gradient(135deg, rgba(1, 51, 70, 0.1), rgba(239, 223, 191, 0.05));
+}
+
+#mass-schedule {
+    background: linear-gradient(135deg, rgba(128, 0, 0, 0.05), rgba(212, 160, 23, 0.05));
+}
+
+.dark-mode #mass-schedule {
+    background: linear-gradient(135deg, rgba(212, 160, 23, 0.05), rgba(128, 0, 0, 0.05));
+}
+
 
 /* تعديلات للعرض على الموبايل */
 @media (max-width: 768px) {
@@ -420,14 +706,14 @@ body.dark-mode {
 .theme-switch-label .icon {
     position: absolute;
     top: 0;
-    width: 40px;
+    width: 15px;
     height: 100%;
-    line-height: 40px;
+    line-height: 33px;
     text-align: center;
     font-size: 20px;
     transition: all 0.4s ease;
     color: #00424f;
-    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.418);
 }
 
 .icon-sun {
@@ -1268,8 +1554,10 @@ footer a:hover {
     box-shadow: none !important;
 }
 
+
+
 .top-bar.scrolled {
-    background: linear-gradient(90deg, #800000, #a00000) !important;
+    background: linear-gradient(90deg, #002334d4, #820303db) !important;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3) !important;
 }
 
@@ -1439,6 +1727,8 @@ footer a:hover {
         grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
         gap: 15px;
     }
+
+    
     
     .father-image {
         width: 120px;

@@ -22,20 +22,20 @@
             <div class="top-bar-content">
                 <div class="site-branding">
                     <div class="site-name">كنيسة القديسين بطرس وبولس</div>
-                    <div class="welcome-section">
-                        <div id="welcomeMessage" class="welcome-message" style="display: none;">
-                            ازيك يا <span id="userName"></span>
-                        </div>
-                        <button id="loginButton" class="register-button">تسجيل الدخول</button>
-                        <div class="social-media">
-                            <a href="https://web.facebook.com/groups/332492051629992/" target="_blank">
-                                <img src="7.png" alt="فيسبوك" loading="lazy">
-                            </a>
-                            <a href="https://www.youtube.com/@PeterAndPoul/videos" target="_blank">
-                                <img src="8.png" alt="يوتيوب" loading="lazy">
-                            </a>
-                        </div>
-                    </div>
+
+<div class="welcome-section">
+    <div id="welcomeMessage" class="welcome-message" style="display: none;">
+        ازيك يا <span id="userName"></span>
+    </div>
+    <button id="loginButton" class="register-button">تسجيل الدخول</button>
+   
+    <button id="loginButtonMobile" class="register-button mobile-login-btn" style="display: none;">تسجيل الدخول</button>
+    <div class="social-media">
+
+    </div>
+</div>  
+
+
                 </div>
                 <button class="toggle-btn">☰</button>
                 <div class="theme-switch-wrapper">
@@ -45,6 +45,7 @@
                         <span class="icon icon-moon">☾</span>
                     </label>
                 </div>
+                
             </div>
             <nav class="desktop-nav">
                 <a href="enjeel.html">الإنجيل المقدس</a>
@@ -55,7 +56,13 @@
                 <a href="admin.html">Controls</a>
             </nav>
         </div>
+        
     </header>
+
+
+    
+
+    
 
     <div class="sidebar-overlay"></div>
     <nav class="sidebar" id="sidebar">
@@ -67,6 +74,8 @@
             <a href="https://www.youtube.com/@PeterAndPoul/videos" target="_blank">
                 <img src="8.png" alt="يوتيوب">
             </a>
+
+            
         </div>
         <a href="enjeel.html" class="sidebar-link">الإنجيل المقدس</a>
         <a href="404.html" class="sidebar-link">الأجبية</a>
@@ -74,6 +83,10 @@
         <a href="404.html" class="sidebar-link">القطمارس</a>
         <a href="courses/courses.html" class="sidebar-link">الكورسات</a>
         <a href="admin.html" class="sidebar-link">Controls</a>
+
+
+
+        
 
 
 
@@ -391,14 +404,20 @@ document.addEventListener('dragstart', function(e) {
                 window.location.href = 'login.html';
             });
 
-            // Welcome Message
-            if (localStorage.getItem('isLoggedIn') === 'true') {
-                const firstName = localStorage.getItem('userFirstName');
-                const lastName = localStorage.getItem('userLastName');
-                document.getElementById('userName').textContent = `${firstName} ${lastName}`;
-                document.getElementById('welcomeMessage').style.display = 'inline-block';
-                document.getElementById('loginButton').style.display = 'none';
-            }
+// Welcome Message
+if (localStorage.getItem('isLoggedIn') === 'true') {
+    const firstName = localStorage.getItem('userFirstName');
+    const lastName = localStorage.getItem('userLastName');
+    document.getElementById('userName').textContent = `${firstName} ${lastName}`;
+    document.getElementById('welcomeMessage').style.display = 'inline-block';
+    document.getElementById('loginButton').style.display = 'none';
+    document.getElementById('loginButtonMobile').style.display = 'none';
+} else {
+    document.getElementById('loginButton').style.display = 'inline-block';
+    document.getElementById('loginButtonMobile').style.display = 'inline-block';
+}
+
+
 
             // Background Image Slideshow
             const images = ['3.jpg', '1.png', '9.jpg', '10.jpg', '11.jpg', '12.jpg', '13.jpg', '14.jpg', '15.jpg'];
@@ -496,55 +515,101 @@ function handleScrollEvent() {
             });
 
             // Initialize mobile header structure
-            function initMobileHeader() {
-                if (window.innerWidth <= 768) {
-                    const topBarContent = document.querySelector('.top-bar-content');
-                    const siteName = document.querySelector('.site-name');
-                    const welcomeMessage = document.querySelector('.welcome-message');
-                    const themeSwitch = document.querySelector('.theme-switch-wrapper');
-                    const toggleBtn = document.querySelector('.toggle-btn');
-                    const socialMedia = document.querySelector('.social-media');
-                    const loginButton = document.querySelector('.register-button');
-                    
-                    // Check if mobile header is already created
-                    if (!document.querySelector('.mobile-header')) {
-                        // Create mobile header structure
-                        const mobileHeader = document.createElement('div');
-                        mobileHeader.className = 'mobile-header';
-                        
-                        const mobileControls = document.createElement('div');
-                        mobileControls.className = 'mobile-controls';
-                        
-                        // Clone elements instead of moving them to avoid reference issues
-                        const siteNameClone = siteName.cloneNode(true);
-                        
-                        // Reorder elements
-                        mobileHeader.appendChild(siteNameClone);
-                        if (welcomeMessage && welcomeMessage.style.display !== 'none') {
-                            const welcomeMessageClone = welcomeMessage.cloneNode(true);
-                            mobileHeader.appendChild(welcomeMessageClone);
-                        }
-                        
-                        mobileControls.appendChild(toggleBtn.cloneNode(true));
-                        mobileControls.appendChild(themeSwitch.cloneNode(true));
-                        
-                        // Clear existing content
-                        topBarContent.innerHTML = '';
-                        
-                        // Add new structure
-                        topBarContent.appendChild(mobileHeader);
-                        topBarContent.appendChild(mobileControls);
-                        
-                        // Re-attach event listeners since we cloned the elements
-                        document.querySelector('.toggle-btn').addEventListener('click', toggleSidebar);
-                        document.querySelector('.theme-switch').addEventListener('change', function() {
-                            document.body.classList.toggle("dark-mode");
-                            document.body.classList.toggle("light-mode");
-                            localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
-                        });
+function initMobileHeader() {
+    if (window.innerWidth <= 768) {
+        const topBarContent = document.querySelector('.top-bar-content');
+        const siteName = document.querySelector('.site-name');
+        const welcomeMessage = document.querySelector('.welcome-message');
+        const themeSwitch = document.querySelector('.theme-switch-wrapper');
+        const toggleBtn = document.querySelector('.toggle-btn');
+        const socialMedia = document.querySelector('.social-media');
+        const loginButtonDesktop = document.getElementById('loginButton');
+        const loginButtonMobile = document.getElementById('loginButtonMobile');
+        
+        // إظهار زر الموبايل وإخفاء زر الكمبيوتر
+        if (loginButtonMobile && loginButtonDesktop) {
+            if (localStorage.getItem('isLoggedIn') !== 'true') {
+                loginButtonMobile.style.display = 'inline-block';
+            }
+            loginButtonDesktop.style.display = 'none';
+        }
+        
+        // إنشاء mobile header
+        if (!document.querySelector('.mobile-header')) {
+            const mobileHeader = document.createElement('div');
+            mobileHeader.className = 'mobile-header';
+            
+            const mobileControls = document.createElement('div');
+            mobileControls.className = 'mobile-controls';
+            
+            // Clone elements
+            const siteNameClone = siteName.cloneNode(true);
+            
+            // ترتيب العناصر
+            mobileHeader.appendChild(siteNameClone);
+            
+            // إضافة رسالة الترحيب إذا كان المستخدم مسجل
+            if (welcomeMessage && welcomeMessage.style.display !== 'none') {
+                const welcomeMessageClone = welcomeMessage.cloneNode(true);
+                mobileHeader.appendChild(welcomeMessageClone);
+            }
+            
+            // إضافة زر تسجيل الدخول للموبايل إذا لم يكن مسجل
+            if (loginButtonMobile && localStorage.getItem('isLoggedIn') !== 'true') {
+                const loginButtonClone = loginButtonMobile.cloneNode(true);
+                loginButtonClone.id = 'loginButtonMobileClone';
+                loginButtonClone.style.display = 'inline-block';
+                mobileHeader.appendChild(loginButtonClone);
+            }
+            
+            // إضافة عناصر التحكم
+            mobileControls.appendChild(toggleBtn.cloneNode(true));
+            mobileControls.appendChild(themeSwitch.cloneNode(true));
+            
+            // إضافة وسائل التواصل الاجتماعي
+            if (socialMedia) {
+                const socialMediaClone = socialMedia.cloneNode(true);
+                mobileHeader.appendChild(socialMediaClone);
+            }
+            
+            // مسح المحتوى القديم
+            topBarContent.innerHTML = '';
+            
+            // إضافة الهيكل الجديد
+            topBarContent.appendChild(mobileHeader);
+            topBarContent.appendChild(mobileControls);
+            
+            // إعادة إرفاق المستمعين للأحداث
+            document.querySelector('.toggle-btn').addEventListener('click', toggleSidebar);
+            document.querySelector('.theme-switch').addEventListener('change', function() {
+                document.body.classList.toggle("dark-mode");
+                document.body.classList.toggle("light-mode");
+                localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+            });
                     }
                 }
+            
+        
+
+            else {
+        // إعادة تعيين للكمبيوتر
+        const loginButtonDesktop = document.getElementById('loginButton');
+        const loginButtonMobile = document.getElementById('loginButtonMobile');
+        
+        if (loginButtonDesktop && loginButtonMobile) {
+            if (localStorage.getItem('isLoggedIn') !== 'true') {
+                loginButtonDesktop.style.display = 'inline-block';
             }
+            loginButtonMobile.style.display = 'none';
+        }
+        
+        // إزالة mobile header إذا كان موجوداً
+        const mobileHeader = document.querySelector('.mobile-header');
+        if (mobileHeader) {
+            mobileHeader.remove();
+        }
+    }
+}
 
             // Run on load and resize with debounce
             let resizeTimeout;
@@ -555,6 +620,8 @@ function handleScrollEvent() {
             
             // Initial call
             initMobileHeader();
+
+            
 
             // Enhanced News Slider
             const newsSlider = document.querySelector('.news-slider');
@@ -724,6 +791,8 @@ function handleScrollEvent() {
                 });
             });
 
+            
+
             // Enhance images with lazy loading and progressive enhancement
             const lazyImages = document.querySelectorAll('img[loading="lazy"]');
             if ('loading' in HTMLImageElement.prototype) {
@@ -748,6 +817,146 @@ function handleScrollEvent() {
                 });
             }
         });
+
+
+        // إضافة تأثير المغناطيس للأقسام
+function initMagnetSections() {
+    const sections = document.querySelectorAll('.section-transiti');
+    const observerOptions = {
+        root: null,
+        rootMargin: '-20% 0px -20% 0px',
+        threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            const section = entry.target;
+            const rect = section.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
+            
+            if (entry.isIntersecting) {
+                // حساب المسافة من الأعلى والأسفل
+                const distanceFromTop = rect.top;
+                const distanceFromBottom = windowHeight - rect.bottom;
+                
+                // إضافة تأثير المغناطيس بناءً على الاتجاه
+                if (distanceFromTop < distanceFromBottom) {
+                    // القسم قادم من الأعلى
+                    section.classList.add('magnet-top');
+                    section.classList.remove('magnet-bottom');
+                } else {
+                    // القسم قادم من الأسفل
+                    section.classList.add('magnet-bottom');
+                    section.classList.remove('magnet-top');
+                }
+                
+                // إزالة التأثير بعد فترة
+                setTimeout(() => {
+                    section.classList.remove('magnet-top', 'magnet-bottom');
+                }, 300);
+            }
+        });
+    }, observerOptions);
+
+    sections.forEach(section => {
+        observer.observe(section);
+    });
+
+    // إضافة تأثير المغناطيس عند التمرير بالماوس
+    let isScrolling = false;
+    window.addEventListener('scroll', () => {
+        if (!isScrolling) {
+            isScrolling = true;
+            requestAnimationFrame(() => {
+                sections.forEach(section => {
+                    if (section.getBoundingClientRect().top < window.innerHeight * 0.8 && 
+                        section.getBoundingClientRect().bottom > window.innerHeight * 0.2) {
+                        
+                        const scrollDirection = window.scrollY > (window.lastScrollY || 0) ? 'down' : 'up';
+                        
+                        if (scrollDirection === 'down') {
+                            section.classList.add('magnet-bottom');
+                            section.classList.remove('magnet-top');
+                        } else {
+                            section.classList.add('magnet-top');
+                            section.classList.remove('magnet-bottom');
+                        }
+                        
+                        setTimeout(() => {
+                            section.classList.remove('magnet-top', 'magnet-bottom');
+                        }, 200);
+                    }
+                });
+                
+                window.lastScrollY = window.scrollY;
+                isScrolling = false;
+            });
+        }
+    });
+
+    // إصلاح مشكلة الجيرسكوب في الموبايل
+    if (window.innerWidth <= 768) {
+        // إزالة بيانات الجيرسكوب في الموبايل
+        document.querySelectorAll('[data-tilt]').forEach(el => {
+            el.removeAttribute('data-tilt');
+            el.removeAttribute('data-tilt-max');
+            el.removeAttribute('data-tilt-speed');
+            el.removeAttribute('data-tilt-perspective');
+        });
+        
+        // تعطيل VanillaTilt في الموبايل
+        if (typeof VanillaTilt !== 'undefined') {
+            VanillaTilt.init = function() {};
+        }
+    }
+}
+
+// استدعاء الدالة بعد تحميل الصفحة
+document.addEventListener('DOMContentLoaded', function() {
+    // ... الكود الحالي ...
+    
+    // إضافة تأثير المغناطيس بعد تحميل الصفحة
+    setTimeout(initMagnetSections, 1000);
+    
+    // تحديث عند تغيير حجم النافذة
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+            initMagnetSections();
+        }, 250);
+    });
+});
+
+// تحسين الأداء للجيرسكوب
+if (window.innerWidth > 768) {
+    // تهيئة VanillaTilt بإعدادات محسنة
+    VanillaTilt.init(document.querySelector('.about-content'), {
+        max: 5, // تقليل الدرجة
+        speed: 300,
+        perspective: 1000,
+        glare: true,
+        "max-glare": 0.2,
+        scale: 1.02,
+        gyroscope: false // تعطيل الجيرسكوب
+    });
+
+
+    
+
+    
+    VanillaTilt.init(document.querySelectorAll('.news-card'), {
+        max: 5,
+        speed: 300,
+        perspective: 1000,
+        glare: true,
+        "max-glare": 0.15,
+        scale: 1.03,
+        gyroscope: false
+    });
+}
+
+        
     </script>
 <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'93a9db35bf691379',t:'MTc0NjM4MTE5Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'93b703ad1a7353cf',t:'MTc0NjUxOTE2NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
 </body>
