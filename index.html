@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" integrity="sha512-1cK78a1o+ht2JcaW6g8OXYwqpev9+6GqOkz9xmBN9iUUhIndKtxwILGWYOSibOKjLsEdjyjZvYDq/cZwNeak0w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body class="light-mode">
     <div id="preloader">
@@ -53,7 +54,6 @@
                 <a href="404.html">الخلاجي</a>
                 <a href="404.html">القطمارس</a>
                 <a href="courses/courses.html">الكورسات</a>
-                <a href="admin.html">Controls</a>
             </nav>
         </div>
         
@@ -65,42 +65,116 @@
     
 
     <div class="sidebar-overlay"></div>
-    <nav class="sidebar" id="sidebar">
-        <button class="sidebar-close-btn"></button>
-        <div class="sidebar-social">
-            <a href="https://web.facebook.com/groups/332492051629992/" target="_blank">
-                <img src="7.png" alt="فيسبوك">
-            </a>
-            <a href="https://www.youtube.com/@PeterAndPoul/videos" target="_blank">
-                <img src="8.png" alt="يوتيوب">
-            </a>
-
-            
+<!-- ضع هذا بدلاً من الكود الحالي للشريط الجانبي -->
+<nav class="sidebar" id="sidebar">
+    <!-- زر الإغلاق المحسّن -->
+    <button class="sidebar-close-btn">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+    </button>
+    
+    <!-- صورة واسم الكنيسة -->
+    <div class="sidebar-header">
+        <div class="sidebar-avatar">
+            <img src="123.icon" alt="كنيسة القديسين بطرس وبولس" loading="lazy">
         </div>
-        <a href="enjeel.html" class="sidebar-link">الإنجيل المقدس</a>
-        <a href="404.html" class="sidebar-link">الأجبية</a>
-        <a href="404.html" class="sidebar-link">الخلاجي</a>
-        <a href="404.html" class="sidebar-link">القطمارس</a>
-        <a href="courses/courses.html" class="sidebar-link">الكورسات</a>
-        <a href="admin.html" class="sidebar-link">Controls</a>
-
-
-
+        <div class="sidebar-title">
+            <h3>كنيسة القديسين بطرس وبولس</h3>
+            <p class="sidebar-subtitle">منوفية - مصر</p>
+        </div>
+    </div>
+    
+    <!-- روابط القائمة -->
+    <div class="sidebar-menu">
+        <a href="enjeel.html" class="sidebar-link">
+            <span class="sidebar-icon"></span>
+            <span>الإنجيل المقدس</span>
+        </a>
+        <a href="404.html" class="sidebar-link">
+            <span class="sidebar-icon"></span>
+            <span>الأجبية</span>
+        </a>
+        <a href="404.html" class="sidebar-link">
+            <span class="sidebar-icon"></span>
+            <span>الخلاجي</span>
+        </a>
+        <a href="404.html" class="sidebar-link">
+            <span class="sidebar-icon"></span>
+            <span>القطمارس</span>
+        </a>
+        <a href="courses/courses.html" class="sidebar-link">
+            <span class="sidebar-icon"></span>
+            <span>الكورسات</span>
+        </a>
+    </div>
+    
+    <!-- قسم إضافي للخيارات -->
+    <div class="sidebar-extra">
+        <div class="sidebar-divider"></div>
+        
+        <!-- تبديل الوضع المظلم داخل الشريط -->
+        <div class="sidebar-theme-toggle">
+            <span class="sidebar-icon">🌙</span>
+            <span>الوضع الليلي</span>
+            <label class="sidebar-switch">
+                <input type="checkbox" id="sidebar-theme-switch">
+                <span class="sidebar-slider"></span>
+            </label>
+        </div>
         
 
-
-
-    </nav>
-
-    <div class="main-image">
-        <div class="overlay"></div>
+        
+        <!-- معلومات الاتصال -->
+        <div class="sidebar-contact">
+            <h4>روابط التواصل</h4>
+            <div class="sidebar-social-icons">
+                <a href="#" class="sidebar-social-icon" aria-label="فيسبوك" target="_blank" rel="noopener">
+                    <i class="fab fa-facebook-f" aria-hidden="true"></i>
+                </a>
+                <a href="#" class="sidebar-social-icon" aria-label="يوتيوب" target="_blank" rel="noopener">
+                    <i class="fab fa-youtube" aria-hidden="true"></i>
+                </a>
+                <a href="#" class="sidebar-social-icon" aria-label="واتساب" target="_blank" rel="noopener">
+                    <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
     </div>
+    
+    <!-- معلومات إضافية -->
+    <div class="sidebar-footer">
+        <p class="sidebar-copyright">© 2023 كنيسة القديسين</p>
+        
+    </div>
+</nav>
+
+<!-- طبقة التعتيم -->
+<div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+
+
+<!-- في قسم الصورة الرئيسية -->
+<div class="main-image">
+    <div class="image-stack" id="imageStack">
+        <!-- ستتم إضافة الصور ديناميكياً هنا -->
+    </div>
+    <div class="overlay"></div>
+    
+    <!-- أضف هذا النص هنا -->
+    <div class="main-image-text">
+        <h1 class="main-title">كنيسة القديسين بطرس وبولس</h1>
+        <p class="main-subtitle">شبين الكوم - المنوفيه</p>
+    </div>
+</div>>
+
+    
 
     <section class="about-section section-transiti" id="aboutSection" data-aos="fade-up">
         <div class="container">
             <h2 class="section-title">عن الكنيسة</h2>
             <div class="about-content" data-tilt data-tilt-max="8" data-tilt-speed="300" data-tilt-perspective="800">
-                <img src="3.jpg" alt="صورة الكنيسة" class="church-image" loading="lazy">
+                <img src="16.jpg" alt="صورة الكنيسة" class="church-image" loading="lazy">
                 <div class="text">
                     <p>تعد كنيسة القديسين بطرس وبولس هي الكنيسة الثالثة بعد كنستي الشهيد مار جرجس والأخرى السيدة العذراء مريم التابعين لايبارشية كرسي المنوفية و كانت تتبع طائفة الأقباط الكاثوليك و في عام 2005 تم شراء الكنيسة و تدشينها بيد صاحب النيافة الحبر الجليل الأنبا بنيامين وتعرضت الكنيسة بحريق هائل يوم الأربعاء الموافق تسعة من شهر سبتمبر عام ألفين و تسعه 2009/09/9 الساعة الثالثة ظهرا كان هناك فى هذا اليوم قداس انتهى الساعة الحادية عشر صباحا قد زعم البعض انه ماس كهربى او شمعة هى التى سببت هذا الحريق الهائل الذى سبب خسائر فادحة و قدرت هذه الخسائر بمائة ألف جنيه قد أثبت أنه ليس ماس كهربى ولا يوجد ايضا اى شمعة يوم الاربعاء يوجد الشمع فقط يومي الأحد والجمعة فالحريق لم يتم بشمعة أو ماس كهربى و تم تجديد الكنيسة بالكامل والان يتم بناء كنيسة أخرى تابعة لهذه الكنيسة </p>
                 </div>
@@ -108,87 +182,143 @@
         </div>
     </section>
  
-    <section id="mass-schedule" class="section-transiti" data-aos="fade-up" data-aos-delay="100">
-        <div class="container">
-            <h2 class="section-title">مواعيد القداسات</h2>
-            <div class="table-responsive">
-                <table class="mass-table">
-                    <thead>
-                        <tr>
-                            <th>الأحد</th>
-                            <th>الإثنين</th>
-                            <th>الثلاثاء</th>
-                            <th>الأربعاء</th>
-                            <th>الخميس</th>
-                            <th>الجمعة</th>
-                            <th>السبت</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>7:00 ص</td>
-                            <td>----</td>
-                            <td>----</td>
-                            <td>12:00 م</td>
-                            <td>----</td>
-                            <td>7:30 ص</td>
-                            <td>7:30 ص</td>
-                        </tr>
-                        <tr>
-                            <td>إلى</td>
-                            <td>--</td>
-                            <td>--</td>
-                            <td>إلى</td>
-                            <td>--</td>
-                            <td>إلى</td>
-                            <td>إلى</td>
-                        </tr>
-                        <tr>
-                            <td>9:30 ص</td>
-                            <td>----</td>
-                            <td>----</td>
-                            <td>3:00 م</td>
-                            <td>----</td>
-                            <td>10:00 ص</td>
-                            <td>10:00 ص</td>
-                        </tr>
-                    </tbody>
-                </table>
+   <section id="mass-schedule" class="section-transiti" data-aos="fade-up" data-aos-delay="100">
+    <div class="container">
+        <h2 class="section-title">مواعيد القداسات</h2>
+        
+        <!-- Desktop Table -->
+        <div class="mass-table-wrapper">
+            <table class="mass-table">
+                <thead>
+                    <tr>
+                        <th>الأحد</th>
+                        <th>الإثنين</th>
+                        <th>الثلاثاء</th>
+                        <th>الأربعاء</th>
+                        <th>الخميس</th>
+                        <th>الجمعة</th>
+                        <th>السبت</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>    
+                        <td>7:00 ص<br>إلى<br>9:30 ص</td>
+                        <td>----</td>
+                        <td>----</td>
+                        <td>12:00 م<br>إلى<br>3:00 م</td>
+                        <td>----</td>
+                        <td>7:30 ص<br>إلى<br>10:00 ص</td>
+                        <td>7:30 ص<br>إلى<br>10:00 ص</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Mobile Cards -->
+        <div class="mass-mobile-cards">
+            <div class="mass-card">
+                <h4>الجمعة</h4>
+                <div class="mass-time">
+                    <span>07:30 ص</span> 
+                    <span>10:00 ص</span>
+                </div>
+            </div>
+            <div class="mass-card">
+                <h4>السبت</h4>
+                <div class="mass-time">
+                    <span>07:30 ص</span> 
+                    <span>10:00 ص</span>
+                </div>
+            </div>
+            <div class="mass-card">
+                <h4>الأحد</h4>
+                <div class="mass-time">
+                    <span>07:00 ص</span> 
+                    <span>09:30 ص</span>
+                </div>
+            </div>
+            <div class="mass-card">
+                <h4>الأربعاء</h4>
+                <div class="mass-time">
+                    <span>12:00 م</span> 
+                    <span>03:00 م</span>
+                </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section id="church-news" class="church-news-section" data-aos="fade-up" data-aos-delay="200">
-        <div class="container">
-            <h2 class="section-title">أخبار الكنيسة</h2>
-            <div class="news-slider">
-                <div class="news">
-                    <div class="news-card" data-tilt data-tilt-max="8" data-tilt-speed="300" data-tilt-perspective="800">
-                        <div class="news-image">
-                            <img src="10.jpg" alt="مهرجان الكرازة 2024" loading="lazy">
+<!-- قسم الأخبار الجديد -->
+
+<section id="church-news" class="church-news-section" data-aos="fade-up">
+    <div class="container">
+        <h2 class="section-title">أخبار الكنيسة</h2>
+        
+        <!-- حاوية السلايدر الجديدة -->
+        <div class="news-3d-container">
+            <div class="news-3d-wrapper">
+                
+                <!-- البطاقة 1 -->
+                <div class="news-card-3d active">
+                    <div class="card-visual">
+                        <img src="16.jpg" alt="ترقية الشمامسة الي اغنسطس " loading="lazy">
+                        <div class="date-badge">
+                            <span class="day">06</span>
+                            <span class="month">SAT</span>
                         </div>
-                        <div class="news-content">
-                            <h3 class="news-title">مشاركة الكنيسة في مهرجان الكرازة 2024</h3>
-                            <p class="news-excerpt">مشاركة الكنيسة في فرع المسرحية...</p>
-                            <button class="read-more-btn" onclick="showModal('مشاركة الكنيسة في فرع المسرحية', 'إخراج عماد فاروق ونبيل عبد الساتر، تأليف نفين ظريف.')">اقرأ المزيد</button>
-                        </div>
+                        <div class="category-tag">رسامة</div>
                     </div>
-                    <div class="news-card" data-tilt data-tilt-max="8" data-tilt-speed="300" data-tilt-perspective="800">
-                        <div class="news-image">
-                            <img src="9.jpg" alt="مهرجان الكرازة 2024" loading="lazy">
-                        </div>
-                        <div class="news-content">
-                            <h3 class="news-title">مشاركة الكنيسة في مهرجان الكرازة 2024</h3>
-                            <p class="news-excerpt">مشاركة الكنيسة في فرع الكورال...</p>
-                            <button class="read-more-btn" onclick="showModal('مشاركة الكنيسة في فرع الكورال', 'تحت إشراف مايكل عادل، تاسوني هبة زاهر، وتاسوني ليليان مجدي.')">اقرأ المزيد</button>
-                        </div>
+                    <div class="card-details">
+                        <h3>ترقية الشمامسة الي اغنسطس </h3>
+                        <p>سيامه مجموعه من ابناء الكنيسه برتبه أغنسطس بيد صاحب الن....</p>
+                        <button class="action-btn" onclick="showModal('سيامه مجموعه من ابناء الكنيسه برتبه أغنسطس بيد صاحب النيافه مطرننا الجليل أنبا بنيامين')">
+                            اقرأ التفاصيل
+                        </button>
                     </div>
                 </div>
-                <button class="slide-btn prev-btn">❮</button>
-                <button class="slide-btn next-btn">❯</button>
+
+                <!-- البطاقة 2 -->
+                <div class="news-card-3d next">
+                    <div class="card-visual">
+                        <img src="9.jpg" alt="فريق الحان ثانوي" loading="lazy">
+                        <div class="date-badge">
+                            <span class="day">24</span>
+                            <span class="month">AUG</span>
+                        </div>
+                        <div class="category-tag">كرازه</div>
+                    </div>
+                    <div class="card-details">
+                        <h3>فريق الحان ثانوي</h3>
+                        <p> مشاركة الكنيسه بفرع الالحان للمرحله الثانويه تحت إش.... </p>
+                        <button class="action-btn" onclick="showModal(' مشاركة الكنيسه بفرع الالحان للمرحله الثانويه تحت إشراف (بيتر ميخائيل) و (مريم هاني) و (إبرام إيهاب) و فاز الفريق بدرع التميز ')">
+                            اقرأ التفاصيل
+                        </button>
+                    </div>
+                </div>
+
+                
+                    </div>
+                </div>
+
+            </div>
+            
+            <!-- أزرار التحكم -->
+            <div class="slider-3d-controls">
+                <button class="nav-btn prev" aria-label="السابق">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+                </button>
+                <div class="dots-indicator">
+                    <!-- سيتم إنشاؤها بالجافاسكريبت -->
+                </div>
+                <button class="nav-btn next" aria-label="التالي">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+                </button>
             </div>
         </div>
-    </section>
+    </div>
+
+    
+</section>
 
     <section class="fathers-section section-transiti" id="fathersSection" data-aos="fade-up" data-aos-delay="300">
         <div class="container">
@@ -244,13 +374,13 @@
         </div>
     </section>
 
-    <div id="newsModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn">×</span>
-            <h3 id="modalTitle"></h3>
-            <p id="modalContent"></p>
-        </div>
+<div id="newsModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal()">×</span> 
+        <h3 id="modalTitle"></h3>
+        <p id="modalContent"></p>
     </div>
+</div>
 
     <footer>
         © جميع الحقوق محفوظة لكنيسة القديسين بطرس وبولس
@@ -261,6 +391,188 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" integrity="sha512-A7AYk1fGKX6S2SsHywmPkrnzTZHrgiVT7GcQkLGDe2ev0aWb8zejytzS8wjo7PGEXKqJOrjQ4oORtnimIRZBtw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.7.2/dist/vanilla-tilt.min.js"></script>
     <script>
+// ===== تحسينات الشريط الجانبي الاحترافية =====
+
+// تهيئة الشريط الجانبي
+function initEnhancedSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    const sidebarBackdrop = document.getElementById('sidebarBackdrop');
+    const toggleBtn = document.querySelector('.toggle-btn');
+    const sidebarCloseBtn = document.querySelector('.sidebar-close-btn');
+    const sidebarLoginBtn = document.getElementById('sidebarLoginButton');
+    const sidebarThemeSwitch = document.getElementById('sidebar-theme-switch');
+    const mainThemeSwitch = document.getElementById('theme-switch');
+    
+    // فتح الشريط
+    function openSidebar() {
+        sidebar.classList.add('show');
+        sidebarBackdrop.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    // إغلاق الشريط
+    function closeSidebar() {
+        sidebar.classList.remove('show');
+        sidebarBackdrop.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    // أحداث الفتح/الإغلاق
+    if (toggleBtn) {
+        toggleBtn.addEventListener('click', openSidebar);
+    }
+    
+    if (sidebarCloseBtn) {
+        sidebarCloseBtn.addEventListener('click', closeSidebar);
+    }
+    
+    if (sidebarBackdrop) {
+        sidebarBackdrop.addEventListener('click', closeSidebar);
+    }
+
+    // زر تسجيل الدخول داخل الشريط
+    if (sidebarLoginBtn) {
+        sidebarLoginBtn.addEventListener('click', function() {
+            closeSidebar();
+            setTimeout(() => {
+                window.location.href = 'login.html';
+            }, 300);
+        });
+    }
+
+    // مزامنة تبديل الوضع المظلم
+    if (sidebarThemeSwitch && mainThemeSwitch) {
+        // تعيين الحالة الأولية
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            sidebarThemeSwitch.checked = true;
+        }
+        
+        sidebarThemeSwitch.addEventListener('change', function() {
+            mainThemeSwitch.checked = this.checked;
+            mainThemeSwitch.dispatchEvent(new Event('change'));
+        });
+        
+        mainThemeSwitch.addEventListener('change', function() {
+            sidebarThemeSwitch.checked = this.checked;
+        });
+    }
+
+    // ===== دعم السحب باللمس =====
+    let startX = 0;
+    let currentX = 0;
+    let isDragging = false;
+    
+    function handleTouchStart(e) {
+        if (!sidebar.classList.contains('show')) return;
+        startX = e.touches[0].clientX;
+        currentX = startX;
+        isDragging = true;
+        sidebar.style.transition = 'none';
+    }
+
+    function handleTouchMove(e) {
+        if (!isDragging || !sidebar.classList.contains('show')) return;
+        
+        currentX = e.touches[0].clientX;
+        const diff = currentX - startX;
+        
+        // السماح بالسحب لليمين فقط (للإغلاق)
+        if (diff > 0) {
+            const translateX = Math.min(diff, 100);
+            sidebar.style.transform = `translateX(${translateX}px)`;
+            sidebarBackdrop.style.opacity = 1 - (translateX / 100);
+        }
+    }
+
+    function handleTouchEnd() {
+        if (!isDragging) return;
+        
+        isDragging = false;
+        sidebar.style.transition = 'right 0.3s ease';
+        sidebarBackdrop.style.transition = 'all 0.3s ease';
+        
+        const diff = currentX - startX;
+        
+        // إذا كانت المسافة كافية (50px)، أغلق الشريط
+        if (diff > 50) {
+            closeSidebar();
+        } else {
+            // إعادة الشريط إلى مكانه
+            sidebar.style.transform = 'translateX(0)';
+            sidebarBackdrop.style.opacity = 1;
+        }
+        
+        // إعادة ضبط التحولات بعد 300ms
+        setTimeout(() => {
+            sidebar.style.transform = '';
+        }, 300);
+    }
+
+    // إضافة مستمعي الأحداث للسحب
+    sidebar.addEventListener('touchstart', handleTouchStart, { passive: true });
+    sidebar.addEventListener('touchmove', handleTouchMove, { passive: true });
+    sidebar.addEventListener('touchend', handleTouchEnd);
+
+    // ===== دعم الإغلاق بالضغط على مفتاح ESC =====
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && sidebar.classList.contains('show')) {
+            closeSidebar();
+        }
+    });
+
+    // ===== تحسينات إضافية =====
+    
+    // إغلاق الشريط عند النقر على رابط
+    document.querySelectorAll('.sidebar-link').forEach(link => {
+        link.addEventListener('click', function(e) {
+            closeSidebar();
+        });
+    });
+}
+
+// تهيئة الشريط الجانبي بعد تحميل الصفحة
+document.addEventListener('DOMContentLoaded', function() {
+    setTimeout(initEnhancedSidebar, 100);
+});
+
+// تحديث عند تغيير حجم النافذة
+window.addEventListener('resize', function() {
+    const sidebar = document.getElementById('sidebar');
+    const sidebarBackdrop = document.getElementById('sidebarBackdrop');
+    
+    // إغلاق الشريط عند التبديل إلى وضع الكمبيوتر
+    if (window.innerWidth > 768 && sidebar && sidebar.classList.contains('show')) {
+        sidebar.classList.remove('show');
+        if (sidebarBackdrop) sidebarBackdrop.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+});
+        
+
+                // دالة المودال يجب أن تكون في النطاق العام (Global Scope)
+        function showModal(title, content) {
+            const modal = document.getElementById("newsModal");
+            const modalTitle = document.getElementById("modalTitle");
+            const modalContent = document.getElementById("modalContent");
+            
+            if (modal && modalTitle && modalContent) {
+                modalTitle.textContent = title;
+                modalContent.textContent = content;
+                modal.style.display = "block";
+                document.body.style.overflow = 'hidden'; // منع التمرير في الخلفية
+            } else {
+                console.error("عناصر المودال غير موجودة!");
+            }
+        }
+                // إغلاق المودال
+        function closeModal() {
+            const modal = document.getElementById("newsModal");
+            if (modal) {
+                modal.style.display = "none";
+                document.body.style.overflow = ''; // إعادة تفعيل التمرير
+            }
+        }
         document.addEventListener("DOMContentLoaded", function () {
             // Initialize AOS
             AOS.init({ duration: 1000, once: true });
@@ -279,15 +591,15 @@ if (window.innerWidth >= 768) {
         perspective: 80
     });
     
-    VanillaTilt.init(document.querySelectorAll('.news-card'), {
-        max: 800,
-        speed: 30000,
-        perspective: 80000
+    VanillaTilt.init(document.querySelectorAll('.church-news'), {
+        max: 8,
+        speed: 3000,
+        perspective: 80
     });
     
-    VanillaTilt.init(document.querySelector('.table-responsive'), {
-        max: 8,
-        speed: 80,
+    VanillaTilt.init(document.querySelector('.mass-table'), {
+        max: 9,
+        speed: 8000,
     });
 }   
 
@@ -346,6 +658,8 @@ document.addEventListener('dragstart', function(e) {
                 });
             }
 
+            
+
             // Preloader
             window.addEventListener('load', function () {
                 setTimeout(function () {
@@ -368,36 +682,6 @@ document.addEventListener('dragstart', function(e) {
                 themeSwitch.checked = savedTheme === 'dark';
             }
 
-            // Enhanced Sidebar Toggle
-            const toggleBtn = document.querySelector('.toggle-btn');
-            const sidebar = document.querySelector('.sidebar');
-            const sidebarCloseBtn = document.querySelector('.sidebar-close-btn');
-            const sidebarOverlay = document.querySelector('.sidebar-overlay');
-            
-            function toggleSidebar() {
-                sidebar.classList.toggle('show');
-                sidebarOverlay.classList.toggle('active');
-                
-                // Disable scroll when sidebar is open
-                if (sidebar.classList.contains('show')) {
-                    document.body.style.overflow = 'hidden';
-                } else {
-                    document.body.style.overflow = '';
-                }
-            }
-            
-            toggleBtn.addEventListener('click', toggleSidebar);
-            sidebarCloseBtn.addEventListener('click', toggleSidebar);
-            sidebarOverlay.addEventListener('click', toggleSidebar);
-            
-            // Close sidebar when clicking on a link
-            document.querySelectorAll('.sidebar-link').forEach(link => {
-                link.addEventListener('click', () => {
-                    if (window.innerWidth <= 768) {
-                        toggleSidebar();
-                    }
-                });
-            });
 
             // Login Button
             document.getElementById('loginButton').addEventListener('click', function () {
@@ -419,38 +703,89 @@ if (localStorage.getItem('isLoggedIn') === 'true') {
 
 
 
-            // Background Image Slideshow
-            const images = ['3.jpg', '1.png', '9.jpg', '10.jpg', '11.jpg', '12.jpg', '13.jpg', '14.jpg', '15.jpg'];
-            const mainImageDiv = document.querySelector('.main-image');
-            const newsSection = document.querySelector('.church-news-section');
-            let currentImageIndex = 0;
-            
-            function updateBackground() {
-                const fadeEffect = [
-                    { opacity: 1 },
-                    { opacity: 0.3 },
-                    { opacity: 1 }
-                ];
-                
-                const fadeOptions = {
-                    duration: 1000,
-                    fill: 'forwards'
-                };
-                
-                mainImageDiv.animate(fadeEffect, fadeOptions);
-                newsSection.animate(fadeEffect, fadeOptions);
-                
-                setTimeout(() => {
-                    mainImageDiv.style.backgroundImage = `url('${images[currentImageIndex]}')`;
-                    newsSection.style.backgroundImage = `url('${images[currentImageIndex]}')`;
-                }, 500);
-            }
-            
-            updateBackground();
-            const slideInterval = setInterval(() => {
-                currentImageIndex = (currentImageIndex + 1) % images.length;
-                updateBackground();
-            }, 5000);
+// Background Image Slideshow - Stacking Technique (No Gap!)
+const images = ['3.jpg', '1.png', '9.jpg', '10.jpg', '11.jpg', '12.jpg', '13.jpg', '14.jpg', '15.jpg'];
+let currentImageIndex = 0;
+let imageStack = null;
+let slides = [];
+let slideInterval = null;
+
+// دالة لإنشاء الصور مكدسة
+function createImageStack() {
+    const mainImageDiv = document.querySelector('.main-image');
+    imageStack = document.getElementById('imageStack');
+    
+    if (!imageStack) {
+        imageStack = document.createElement('div');
+        imageStack.className = 'image-stack';
+        imageStack.id = 'imageStack';
+        mainImageDiv.insertBefore(imageStack, mainImageDiv.querySelector('.overlay'));
+    }
+    
+    // إضافة جميع الصور
+    images.forEach((src, index) => {
+        const slide = document.createElement('div');
+        slide.className = 'slide';
+        slide.style.backgroundImage = `url('${src}')`;
+        slide.dataset.index = index;
+        
+        if (index === 0) {
+            slide.classList.add('active');
+        }
+        
+        imageStack.appendChild(slide);
+        slides.push(slide);
+    });
+}
+
+// دالة للتبديل بين الصور
+function nextSlide() {
+    if (slides.length === 0) return;
+    
+    const currentSlide = slides[currentImageIndex];
+    const nextIndex = (currentImageIndex + 1) % slides.length;
+    const nextSlide = slides[nextIndex];
+    
+    // تهيئة الصورة التالية
+    nextSlide.style.backgroundImage = `url('${images[nextIndex]}')`;
+    
+    // تبديل بسلاسة
+    currentSlide.classList.remove('active');
+    nextSlide.classList.add('active');
+    
+    currentImageIndex = nextIndex;
+}
+
+// تهيئة السلايدر
+function initSlideshow() {
+    createImageStack();
+    
+    // بدء التبديل التلقائي بعد 5 ثواني
+    setTimeout(() => {
+        slideInterval = setInterval(nextSlide, 5000);
+    }, 5000);
+    
+    // التأكد من تحميل الصور الأولى
+    const firstImage = new Image();
+    firstImage.src = images[0];
+    firstImage.onload = function() {
+        console.log('✅ الصورة الأولى محملة');
+    };
+}
+
+// بدء السلايدر
+initSlideshow();
+
+// إيقاف التقليب عند ترك الصفحة
+document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+        if (slideInterval) clearInterval(slideInterval);
+    } else {
+        if (slideInterval) {
+            slideInterval = setInterval(nextSlide, 5000);
+        }
+    }
+});
 
             // Scroll Behavior for All Devices
             // Scroll Behavior for All Devices
@@ -515,6 +850,7 @@ function handleScrollEvent() {
             });
 
             // Initialize mobile header structure
+// Initialize mobile header structure
 function initMobileHeader() {
     if (window.innerWidth <= 768) {
         const topBarContent = document.querySelector('.top-bar-content');
@@ -560,6 +896,11 @@ function initMobileHeader() {
                 loginButtonClone.id = 'loginButtonMobileClone';
                 loginButtonClone.style.display = 'inline-block';
                 mobileHeader.appendChild(loginButtonClone);
+                
+                // إضافة مستمع الأحداث لزر تسجيل الدخول في الموبايل
+                loginButtonClone.addEventListener('click', function () {
+                    window.location.href = 'login.html';
+                });
             }
             
             // إضافة عناصر التحكم
@@ -586,12 +927,16 @@ function initMobileHeader() {
                 document.body.classList.toggle("light-mode");
                 localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
             });
-                    }
-                }
             
-        
-
-            else {
+            // إضافة مستمع الأحداث لزر تسجيل الدخول الأصلي في الموبايل (إذا كان موجوداً)
+            const originalMobileLoginBtn = document.getElementById('loginButtonMobile');
+            if (originalMobileLoginBtn) {
+                originalMobileLoginBtn.addEventListener('click', function() {
+                    window.location.href = 'login.html';
+                });
+            }
+        }
+    } else {
         // إعادة تعيين للكمبيوتر
         const loginButtonDesktop = document.getElementById('loginButton');
         const loginButtonMobile = document.getElementById('loginButtonMobile');
@@ -623,22 +968,7 @@ function initMobileHeader() {
 
             
 
-            // Enhanced News Slider
-            const newsSlider = document.querySelector('.news-slider');
-            const newsCards = document.querySelectorAll('.news-card');
-            const nextBtn = document.querySelector('.next-btn');
-            const prevBtn = document.querySelector('.prev-btn');
-            let currentIndex = 0;
-            let autoSlideInterval = null;
 
-            function updateSlider() {
-                newsCards.forEach((card, index) => {
-                    card.classList.remove('active');
-                    if (index === currentIndex) {
-                        card.classList.add('active');
-                    }
-                });
-            }
 
             nextBtn.addEventListener('click', () => {
                 stopAutoSlide();
@@ -693,18 +1023,7 @@ function initMobileHeader() {
                 startAutoSlide();
             });
 
-            // Modal Functions
-            window.showModal = function(title, content) {
-                const modal = document.getElementById("newsModal");
-                const modalTitle = document.getElementById("modalTitle");
-                const modalContent = document.getElementById("modalContent");
-                modalTitle.textContent = title;
-                modalContent.textContent = content;
-                modal.style.display = "block";
-                
-                // Disable scroll when modal is open
-                document.body.style.overflow = 'hidden';
-            };
+
 
             document.querySelector(".close-btn").onclick = function () {
                 document.getElementById("newsModal").style.display = "none";
@@ -945,19 +1264,477 @@ if (window.innerWidth > 768) {
     
 
     
-    VanillaTilt.init(document.querySelectorAll('.news-card'), {
-        max: 5,
-        speed: 300,
-        perspective: 1000,
-        glare: true,
-        "max-glare": 0.15,
-        scale: 1.03,
-        gyroscope: false
+
+
+    
+
+
+// استدعاء الدالة بعد تحميل الصفحة
+document.addEventListener('DOMContentLoaded', function() {
+    // ... الكود الحالي ...
+    
+    // إضافة الأنيميشن للجوال
+    if (window.innerWidth <= 768) {
+        initMobileNewsAnimation();
+    }
+    
+    // تحديث عند تغيير حجم النافذة
+    window.addEventListener('resize', function() {
+        if (window.innerWidth <= 768) {
+            // إعادة التهيئة إذا كنا في وضع الموبايل
+            const existingAnimation = document.querySelector('.drag-indicator');
+            if (!existingAnimation) {
+                initMobileNewsAnimation();
+            }
+        } else {
+            // إزالة الأنيميشن إذا كنا في وضع الكمبيوتر
+            const dragIndicator = document.querySelector('.drag-indicator');
+            const mobileBtns = document.querySelectorAll('.mobile-nav-btn');
+            
+            if (dragIndicator) dragIndicator.remove();
+            mobileBtns.forEach(btn => btn.remove());
+        }
     });
+});
+
+
+    
+    // إضافة مستمعي الأحداث لأزرار "اقرأ المزيد"
+    readMoreBtns.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            // إيقاف التقليب التلقائي عند النقر على زر اقرأ المزيد
+            stopAutoSlide();
+            autoSlidePaused = true;
+            
+            // إعادة تشغيل التقليب التلقائي بعد إغلاق المودال
+            const checkModalClosed = setInterval(() => {
+                const modal = document.getElementById('newsModal');
+                if (modal && modal.style.display === 'none') {
+                    autoSlidePaused = false;
+                    if (isMobile) startAutoSlide();
+                    clearInterval(checkModalClosed);
+                }
+            }, 500);
+        });
+    });
+    
+    // إضافة السحب باللمس في الجوال
+    newsGrid.addEventListener('touchstart', handleTouchStart, { passive: true });
+    newsGrid.addEventListener('touchend', handleTouchEnd, { passive: true });
+    
+    // إيقاف التقليب التلقائي عند التمرير
+    newsGrid.addEventListener('wheel', () => {
+        if (isMobile) {
+            stopAutoSlide();
+            autoSlidePaused = true;
+            
+            setTimeout(() => {
+                autoSlidePaused = false;
+                startAutoSlide();
+            }, 5000);
+        }
+    });
+    
+    // التعامل مع تغيير حجم النافذة
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            setupSlider();
+        }, 250);
+    });
+    
+    // التعامل مع رؤية الصفحة
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+            stopAutoSlide();
+        } else if (isMobile && !autoSlidePaused) {
+            startAutoSlide();
+        }
+    });
+    
+    // التهيئة الأولية
+    setupSlider();
+    
+    // إضافة مؤشر للسلايدر النشط
+
+    
+    // إضافة المؤشر إذا كان في الجوال
+    if (isMobile) {
+        addActiveIndicator();
+    }
 }
 
+
+
+// استدعاء الدالة بعد تحميل الصفحة
+document.addEventListener('DOMContentLoaded', function() {
+    // ... الكود الحالي ...
+    
+    initNewsSlider();
+});
+
+// ==========================================
+            // كود سلايدر الأخبار الجديد (3D Slider) - تم إصلاحه
+            // ==========================================
+            const cards = document.querySelectorAll('.news-card-3d');
+            const prevBtn = document.querySelector('.nav-btn.prev');
+            const nextBtn = document.querySelector('.nav-btn.next');
+            const dotsContainer = document.querySelector('.dots-indicator');
+            const newsContainer = document.querySelector('.news-3d-wrapper');
+
+            if (cards.length > 0) {
+                let currentIndex = 0;
+                let autoSlideInterval = null;
+                let touchStartX = 0;
+                let touchEndX = 0;
+
+                // إنشاء نقاط المؤشر
+                if (dotsContainer) {
+                    dotsContainer.innerHTML = ''; // تنظيف القديم
+                    cards.forEach((_, index) => {
+                        const dot = document.createElement('div');
+                        dot.classList.add('dot-indicator');
+                        if (index === 0) dot.classList.add('active');
+                        // إضافة حدث النقر على النقطة
+                        dot.addEventListener('click', () => {
+                            currentIndex = index;
+                            updateSlider();
+                            resetAutoSlide();
+                        });
+                        dotsContainer.appendChild(dot);
+                    });
+                }
+
+                const dots = document.querySelectorAll('.dot-indicator');
+
+                function updateSlider() {
+                    cards.forEach((card, index) => {
+                        // إزالة جميع الكلاسات الخاصة بالحركة
+                        card.className = 'news-card-3d';
+                        card.style.opacity = '';
+                        card.style.transform = '';
+
+                        // تحديد الكلاس المناسب
+                        if (index === currentIndex) {
+                            card.classList.add('active');
+                        } else if (index === (currentIndex + 1) % cards.length) {
+                            card.classList.add('next');
+                        } else if (index === (currentIndex - 1 + cards.length) % cards.length) {
+                            card.classList.add('prev');
+                        } else {
+                            // إخفاء البطاقات البعيدة
+                            card.style.opacity = '0';
+                            card.style.transform = 'translateY(50px) scale(0.8)';
+                        }
+                    });
+
+                    // تحديث النقاط
+                    if (dots.length > 0) {
+                        dots.forEach((dot, idx) => {
+                            dot.classList.toggle('active', idx === currentIndex);
+                        });
+                    }
+                }
+
+                function nextSlide() {
+                    currentIndex = (currentIndex + 1) % cards.length;
+                    updateSlider();
+                }
+
+                function prevSlide() {
+                    currentIndex = (currentIndex - 1 + cards.length) % cards.length;
+                    updateSlider();
+                }
+
+                // أزرار التحكم
+                if (nextBtn) {
+                    nextBtn.onclick = function() {
+                        nextSlide();
+                        resetAutoSlide();
+                    };
+                }
+                if (prevBtn) {
+                    prevBtn.onclick = function() {
+                        prevSlide();
+                        resetAutoSlide();
+                    };
+                }
+
+                // دعم اللمس (Swipe)
+                if (newsContainer) {
+                    newsContainer.addEventListener('touchstart', (e) => {
+                        touchStartX = e.changedTouches[0].screenX;
+                        stopAutoSlide(); // إيقاف مؤقت عند اللمس
+                    }, { passive: true });
+
+                    newsContainer.addEventListener('touchend', (e) => {
+                        touchEndX = e.changedTouches[0].screenX;
+                        handleSwipe();
+                        startAutoSlide(); // إعادة التشغيل
+                    });
+                }
+
+                function handleSwipe() {
+                    const threshold = 50;
+                    const diff = touchEndX - touchStartX;
+                    if (Math.abs(diff) > threshold) {
+                        if (diff > 0) prevSlide(); // سحب لليمين
+                        else nextSlide(); // سحب لليسار
+                    }
+                }
+
+                // التشغيل التلقائي
+                function startAutoSlide() {
+                    if (!autoSlideInterval) {
+                        autoSlideInterval = setInterval(nextSlide, 4000);
+                    }
+                }
+
+                function stopAutoSlide() {
+                    if (autoSlideInterval) {
+                        clearInterval(autoSlideInterval);
+                        autoSlideInterval = null;
+                    }
+                }
+
+                function resetAutoSlide() {
+                    stopAutoSlide();
+                    startAutoSlide();
+                }
+
+                // البدء
+                updateSlider();
+                startAutoSlide();
+                
+                // إيقاف عند وضع الماوس (اختياري)
+                if (newsContainer) {
+                    newsContainer.addEventListener('mouseenter', stopAutoSlide);
+                    newsContainer.addEventListener('mouseleave', startAutoSlide);
+                }
+            }
+            // ==========================================
+            // نهاية كود السلايدر
+            // ==========================================
+
+            // ... بقية الكود (Login, Theme, etc.) كما هو ...
+            
+            // Background Image Slideshow
+            const images = ['3.jpg', '1.png', '9.jpg', '10.jpg', '11.jpg', '12.jpg', '13.jpg', '14.jpg', '15.jpg'];
+            let currentImageIndex = 0;
+            let imageStack = null;
+            let slides = [];
+            let slideInterval = null;
+
+            function createImageStack() {
+                const mainImageDiv = document.querySelector('.main-image');
+                imageStack = document.getElementById('imageStack');
+                
+                if (!imageStack && mainImageDiv) {
+                    imageStack = document.createElement('div');
+                    imageStack.className = 'image-stack';
+                    imageStack.id = 'imageStack';
+                    mainImageDiv.insertBefore(imageStack, mainImageDiv.querySelector('.overlay'));
+                }
+                
+                if(imageStack) {
+                    images.forEach((src, index) => {
+                        const slide = document.createElement('div');
+                        slide.className = 'slide';
+                        slide.style.backgroundImage = `url('${src}')`;
+                        if (index === 0) slide.classList.add('active');
+                        imageStack.appendChild(slide);
+                        slides.push(slide);
+                    });
+                }
+            }
+
+            function mainNextSlide() {
+                if (slides.length === 0) return;
+                const currentSlide = slides[currentImageIndex];
+                const nextIndex = (currentImageIndex + 1) % slides.length;
+                const nextSlide = slides[nextIndex];
+                
+                // تحديث الصورة التالية (للتأكد من تحميلها)
+                nextSlide.style.backgroundImage = `url('${images[nextIndex]}')`;
+                
+                currentSlide.classList.remove('active');
+                nextSlide.classList.add('active');
+                currentImageIndex = nextIndex;
+            }
+
+            // بدء سلايدر الخلفية
+            createImageStack();
+            setInterval(mainNextSlide, 5000);
+
+            // Theme Toggle
+            const themeSwitch = document.getElementById("theme-switch");
+            if(themeSwitch) {
+                themeSwitch.addEventListener("change", function () {
+                    document.body.classList.toggle("dark-mode");
+                    document.body.classList.toggle("light-mode");
+                    localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+                });
+                
+                const savedTheme = localStorage.getItem('theme');
+                if (savedTheme) {
+                    document.body.classList.add(savedTheme === 'dark' ? 'dark-mode' : 'light-mode');
+                    themeSwitch.checked = savedTheme === 'dark';
+                }
+            }
+
+            // Sidebar Toggle
+            const toggleBtn = document.querySelector('.toggle-btn');
+            const sidebar = document.querySelector('.sidebar');
+            const sidebarCloseBtn = document.querySelector('.sidebar-close-btn');
+            const sidebarOverlay = document.querySelector('.sidebar-overlay');
+            
+            function toggleSidebar() {
+                if(sidebar) {
+                    sidebar.classList.toggle('show');
+                    if(sidebarOverlay) sidebarOverlay.classList.toggle('active');
+                    document.body.style.overflow = sidebar.classList.contains('show') ? 'hidden' : '';
+                }
+            }
+            
+            if(toggleBtn) toggleBtn.addEventListener('click', toggleSidebar);
+            if(sidebarCloseBtn) sidebarCloseBtn.addEventListener('click', toggleSidebar);
+            if(sidebarOverlay) sidebarOverlay.addEventListener('click', toggleSidebar);
+
+            // Login Logic
+            const loginBtn = document.getElementById('loginButton');
+            const mobileLoginBtn = document.getElementById('loginButtonMobile');
+            
+            function goToLogin() { window.location.href = 'login.html'; }
+            
+            if(loginBtn) loginBtn.addEventListener('click', goToLogin);
+            if(mobileLoginBtn) mobileLoginBtn.addEventListener('click', goToLogin);
+
+            if (localStorage.getItem('isLoggedIn') === 'true') {
+                const userName = document.getElementById('userName');
+                const welcomeMsg = document.getElementById('welcomeMessage');
+                if(userName) userName.textContent = `${localStorage.getItem('userFirstName')} ${localStorage.getItem('userLastName')}`;
+                if(welcomeMsg) welcomeMsg.style.display = 'inline-block';
+                if(loginBtn) loginBtn.style.display = 'none';
+                if(mobileLoginBtn) mobileLoginBtn.style.display = 'none';
+            }
+            
+            // Preloader
+            window.addEventListener('load', function () {
+                const preloader = document.getElementById('preloader');
+                if(preloader) {
+                    setTimeout(() => preloader.style.display = 'none', 1000);
+                }
+            });
+
+             // Custom Cursor (Desktop Only)
+             if (window.innerWidth >= 768) {
+                const cursor = document.querySelector('.custom-cursor');
+                if(cursor) {
+                    document.addEventListener('mousemove', (e) => {
+                        cursor.style.left = `${e.clientX}px`;
+                        cursor.style.top = `${e.clientY}px`;
+                    });
+
+                    document.querySelectorAll('a, button').forEach(el => {
+                        el.addEventListener('mouseenter', () => cursor.classList.add('hovered'));
+                        el.addEventListener('mouseleave', () => cursor.classList.remove('hovered'));
+                    });
+                }
+             }
+// دالة فتح المودال (يجب أن تكون في النطاق العام)
+window.showModal = function(title, content) {
+    const modal = document.getElementById("newsModal");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalContent = document.getElementById("modalContent");
+    
+    if (modal && modalTitle && modalContent) {
+        modalTitle.textContent = title;
+        modalContent.textContent = content;
+        modal.style.display = "block";
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+/// ==========================================
+// كود المودال المصحح - يجب أن يكون قبل أي تعريفات أخرى
+// ==========================================
+
+// دالة فتح المودال (الإصدار المصحح)
+window.showModal = function(title, content) {
+    const modal = document.getElementById("newsModal");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalContent = document.getElementById("modalContent");
+    
+    if (modal && modalTitle && modalContent) {
+        // تعيين المحتوى
+        modalTitle.textContent = title;
+        modalContent.textContent = content;
         
+        // إظهار المودال
+        modal.style.display = "block";
+        document.body.style.overflow = 'hidden';
+        document.documentElement.style.overflow = 'hidden'; // إضافة هذا السطر
+        
+        console.log("تم فتح المودال:", title); // للتتبع
+    } else {
+        console.error("عناصر المودال غير موجودة!");
+    }
+};
+
+// دالة إغلاق المودال (الإصدار المصحح)
+window.closeModal = function() {
+    const modal = document.getElementById("newsModal");
+    if (modal) {
+        modal.style.display = "none";
+        document.body.style.overflow = '';
+        document.documentElement.style.overflow = ''; // إضافة هذا السطر
+        console.log("تم إغلاق المودال"); // للتتبع
+    }
+};
+
+// إعداد مستمعي الأحداث بعد تحميل الصفحة
+document.addEventListener('DOMContentLoaded', function() {
+    const modal = document.getElementById('newsModal');
+    
+    if (modal) {
+        // إغلاق عند النقر على زر X
+        const closeBtn = modal.querySelector('.close-btn');
+        if (closeBtn) {
+            // إزالة أي مستمعين سابقين أولاً
+            closeBtn.replaceWith(closeBtn.cloneNode(true));
+            const newCloseBtn = modal.querySelector('.close-btn');
+            
+            newCloseBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                closeModal();
+            });
+        }
+        
+        // إغلاق عند النقر خارج الصندوق
+        modal.addEventListener('click', function(event) {
+            if (event.target === modal) {
+                closeModal();
+            }
+        });
+        
+        // إغلاق عند الضغط على زر ESC
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape' && modal.style.display === 'block') {
+                closeModal();
+            }
+        });
+        
+        console.log("تم إعداد مستمعي الأحداث للمودال");
+    }
+});
+
+
+
     </script>
+
+
 <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'93a9db35bf691379',t:'MTc0NjM4MTE5Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'93b703ad1a7353cf',t:'MTc0NjUxOTE2NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
 </body>
 </html>
