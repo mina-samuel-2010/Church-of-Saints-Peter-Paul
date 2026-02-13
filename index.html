@@ -11,6 +11,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" integrity="sha512-1cK78a1o+ht2JcaW6g8OXYwqpev9+6GqOkz9xmBN9iUUhIndKtxwILGWYOSibOKjLsEdjyjZvYDq/cZwNeak0w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
+
+
+
+
 <body class="light-mode">
     <div id="preloader">
         <div class="spinner"></div>
@@ -166,7 +170,7 @@
         <h1 class="main-title">كنيسة القديسين بطرس وبولس</h1>
         <p class="main-subtitle">شبين الكوم - المنوفيه</p>
     </div>
-</div>>
+</div>
 
     
 
@@ -382,6 +386,32 @@
     </div>
 </div>
 
+
+    <!-- ========================================== -->
+    <!-- كود الشات بوت (زر واحد فقط صحيح) -->
+    <!-- ========================================== -->
+<button class="chatbot-toggler">
+    <span class="material-symbols-outlined">chat</span>
+    <span class="material-symbols-outlined">close</span>
+</button>
+
+    <div class="chatbot">
+        <header>
+            <h2>أبونا</h2>
+            <span class="close-btn material-symbols-outlined">close</span>
+        </header>
+        <ul class="chatbox">
+            <li class="chat incoming">
+                <span class="material-symbols-outlined icon">✝️</span>
+                <p>أهلاً يا ابني/بنتي.. نعمة وسلام ليك.<br>أنا موجود هنا لو حابب تدردش في أي حاجة أو عندك سؤال روحي.. اتفضل.</p>
+            </li>
+        </ul>
+        <div class="chat-input">
+            <textarea placeholder="اكتب رسالتك هنا..." spellcheck="false" required></textarea>
+            <span id="send-btn" class="material-symbols-rounded">send</span>
+        </div>
+    </div>
+
     <footer>
         © جميع الحقوق محفوظة لكنيسة القديسين بطرس وبولس
         <br>
@@ -389,8 +419,34 @@
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" integrity="sha512-A7AYk1fGKX6S2SsHywmPkrnzTZHrgiVT7GcQkLGDe2ev0aWb8zejytzS8wjo7PGEXKqJOrjQ4oORtnimIRZBtw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="chatbot.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.7.2/dist/vanilla-tilt.min.js"></script>
+        
+
     <script>
+
+
+                // Modal functions
+        window.showModal = function(title, content) {
+            const modal = document.getElementById("newsModal");
+            const modalTitle = document.getElementById("modalTitle");
+            const modalContent = document.getElementById("modalContent");
+            if (modal && modalTitle && modalContent) {
+                modalTitle.textContent = title;
+                modalContent.textContent = content;
+                modal.style.display = "block";
+                document.body.style.overflow = 'hidden';
+            }
+        };
+
+        window.closeModal = function() {
+            const modal = document.getElementById("newsModal");
+            if (modal) {
+                modal.style.display = "none";
+                document.body.style.overflow = '';
+            }
+        };
+
 // ===== تحسينات الشريط الجانبي الاحترافية =====
 
 // تهيئة الشريط الجانبي
@@ -1735,6 +1791,11 @@ document.addEventListener('DOMContentLoaded', function() {
     </script>
 
 
+
 <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'93a9db35bf691379',t:'MTc0NjM4MTE5Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'93b703ad1a7353cf',t:'MTc0NjUxOTE2NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+
+
+
+
 </body>
 </html>
